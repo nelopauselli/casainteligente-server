@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Casa Inteligente</title>
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<meta name="theme-color" content="#000">
+	<link rel="stylesheet" href="css/style.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+	 crossorigin="anonymous">
+
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+			<a href="/" class="navbar-brand mb-0 h1">Casa Inteligente</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/Settings.html">Configuraci&oacute;n</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main class="container-fluid">
+		<div class="row">
+			<div class="card col-md-3 col-lg-2">
+				<img class="card-img-top" src="/images/extractor.png" alt="">
+				<div class="card-body">
+					<h5 id="label-relay-1"></h5>
+					<form action="toggle" method="POST">
+						<input type="hidden" name="led" value="1" />
+						<p id="status-relay-1">...</p>
+						<div class="btn-group" role="group">
+							<button type="submit" id="turnOn-relay-1" class="btn btn-success">Encender</button>
+							<button type="submit" id="turnOff-relay-1" class="btn btn-danger">Apagar</button>
+						</div>
+						<div id="box-offAt-1" class="box box-info" style="display: none">
+							Se apagar a las
+							<br/>
+							<span id="label-offAt-1"></span>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="card col-md-3 col-lg-2">
+				<img class="card-img-top" src="/images/toallero.jpg" alt="">
+				<div class="card-body">
+					<h5 id="label-relay-2"></h5>
+					<form action="toggle" method="POST">
+						<input type="hidden" name="led" value="2" />
+						<p id="status-relay-2">...</p>
+						<div class="btn-group" role="group">
+							<button type="submit" id="turnOn-relay-2" class="btn btn-success">Encender</button>
+							<button type="submit" id="turnOff-relay-2" class="btn btn-danger">Apagar</button>
+						</div>
+						<div id="box-offAt-2" class="box box-info" style="display: none">
+							Se apagar a las
+							<br/>
+							<span id="label-offAt-2"></span>
+						</div>
+					</form>
+				</div>
+			</div>
+	</main>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+	 crossorigin="anonymous"></script>
+
+	<script>
+		$(function () {
+			var socket = io();
+			socket.emit('status', '192.168.1.104');
+
+			socket.on('status', function (msg) {
+				var json = JSON.parse(msg);
+				for (var i = 0; i < json.relays.length; i++) {
+					var relay = json.relays[i];
+					$("#label-relay-" + (i + 1)).text(relay.label);
+					$("#status-relay-" + (i + 1)).text(relay.status == "on" ? "encendido" : "apagado")
+
+					if (relay.status == "on") {
+						$("#turnOn-relay-" + (i + 1)).attr("disabled", "disabled");
+						$("#turnOff-relay-" + (i + 1)).removeAttr("disabled");
+
+						$("#box-offAt-" + (i + 1)).show();
+						$("#label-offAt-" + (i + 1)).text(relay.offAt);
+					}
+					else {
+						$("#turnOn-relay-" + (i + 1)).removeAttr("disabled");
+						$("#turnOff-relay-" + (i + 1)).attr("disabled", "disabled");
+						$("#box-offAt-" + (i + 1)).hide();
+					}
+				}
+			});
+
+			$("form").submit(function () {
+				var data = {
+					ip: '192.168.1.104',
+					led: $("input[name='led']", this).val()
+				};
+				socket.emit('toggle', JSON.stringify(data));
+
+				return false;
+			});
+		});
+	</script>
+
+</body>
+
+</html>
