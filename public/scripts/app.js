@@ -1,4 +1,4 @@
-var app = angular.module('smartHome', ['ngRoute']);
+var app = angular.module('smartHome', ['ngRoute', 'ngResource']);
 app.factory('socket', function ($rootScope) {
 	var socket = io.connect();
 	return {
@@ -22,13 +22,20 @@ app.factory('socket', function ($rootScope) {
 		}
 	};
 });
+app.factory('Room', ['$resource', function ($resource) {
+	return $resource('api/rooms/:roomId', {}, {
+		query: {
+			method: 'GET',
+			params: { roomId: '' },
+			isArray: true
+		}
+	});
+}]);
 
-app.controller('HomeCtrl', function ($scope) {
-	$scope.rooms = [
-		{ id: 1, image: 'images/banio.png', title: 'Baño', text: 'Bla bla bla' },
-		{ id: 2, image: 'images/patio.png', title: 'Patio', text: 'Bla bla bla' }
-	];
-});
+app.controller('HomeCtrl', ['$scope', 'Room', function ($scope, room) {
+	$scope.rooms = room.query();
+}]);
+
 app.controller('RoomCtrl', function ($scope, socket) {
 	socket.emit('status', '192.168.1.104');
 

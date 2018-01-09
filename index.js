@@ -7,12 +7,7 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/data/main", function(req, res){
-	var data = [];
-	data.push({id: 1, image: 'banio.png', title: 'Baño', text: 'Bla bla bla'});
-	data.push({id: 2, image: 'patio.png', title: 'Patio', text: 'Bla bla bla'});
-	res.json(data);
-});
+app.use("/api", require("./controllers"));
 
 io.on('connection', function (socket) {
 	console.log('a user connected');
