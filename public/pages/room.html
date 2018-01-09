@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="card col-md-3 col-lg-2" ng-repeat="d in devices">
+		<img class="card-img-top" ng-src="{{d.image}}" alt="">
+		<div class="card-body">
+			<h5>{{d.name}}</h5>
+				<input type="hidden" name="led" ng-value="{{d.id}}" />
+				<p>{{d.status}}</p>
+				<div class="btn-group" role="group">
+					<button type="submit" class="btn btn-primary" ng-repeat="a in d.actions" ng-click="invoke(a)" ng-disabled="a.enabled">{{a.title}}</button>
+				</div>
+				<div class="box box-info" ng-show="d.offAt">
+					Se apagar a las
+					<br/>
+					<span>{{d.offAt}}</span>
+				</div>
+		</div>
+	</div>
+</div>
