@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "description": "a socket.io server",
+  "main": "index.js",
+  "authors": [
+    "nelo pauselli"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/nelopauselli/casainteligente-server",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.8",
+    "requirejs": "^2.3.5",
+    "bootstrap": "bootstrap#v4.0.0-beta.3",
+    "popper.js": "^1.12.9",
+    "jquery": "^3.2.1",
+    "angular-resource": "^1.6.8",
+    "angular-route": "^1.6.8"
+  }
+}
