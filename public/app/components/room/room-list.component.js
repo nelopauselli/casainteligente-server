@@ -4,6 +4,6 @@ angular.module("app")
 		controller: ['$scope', 'roomService', roomListController]
 	});
 
-function roomListController($scope, Room) {
-	$scope.rooms = Room.query();
+function roomListController($scope, roomService) {
+	$scope.rooms = roomService.query();
 }

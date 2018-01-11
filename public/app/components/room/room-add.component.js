@@ -12,7 +12,7 @@ function roomAddController($scope, roomService) {
 		var room = $scope.room;
 		console.log(room);
 		roomService.save(room, function(){
-			console.log('datos guardados')
+			location.reload();
 		});
 	}
 }
