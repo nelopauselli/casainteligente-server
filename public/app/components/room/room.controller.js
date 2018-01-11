@@ -1,20 +1,7 @@
-var app = angular.module("app");
+angular.module("app")
+.controller('RoomCtrl', roomController);
 
-app.factory('Room', ['$resource', function ($resource) {
-	return $resource('api/rooms/:roomId', {}, {
-		query: {
-			method: 'GET',
-			params: { roomId: '' },
-			isArray: true
-		}
-	});
-}]);
-
-app.controller('HomeCtrl', ['$scope', function ($scope) {
-	
-}]);
-
-app.controller('RoomCtrl', function ($scope, socket) {
+function roomController($scope, socket) {
 	socket.emit('status', '192.168.1.104');
 
 	socket.on('status', function (msg) {
@@ -57,6 +44,4 @@ app.controller('RoomCtrl', function ($scope, socket) {
 		console.log(action);
 		socket.emit('toggle', JSON.stringify(action));
 	}
-});
-app.controller('SettingsCtrl', function ($scope) {
-});
+}
