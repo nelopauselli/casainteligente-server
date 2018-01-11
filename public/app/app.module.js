@@ -33,7 +33,7 @@ app.factory('Room', ['$resource', function ($resource) {
 }]);
 
 app.component('roomList', {
-	templateUrl: 'components/room-list.html',
+	templateUrl: 'app/components/room/room-list.html',
 	controller: ['$scope','Room', function RoomListController($scope, Room) {
 		$scope.rooms = Room.query();
 	}]
@@ -52,7 +52,7 @@ app.controller('RoomCtrl', function ($scope, socket) {
 			var relay = json.relays[i];
 			var device = {
 				id: 1,
-				image: 'images/extractor.png',
+				image: 'extractor.png',
 				name: relay.label,
 				status: relay.status == "on" ? "encendido" : "apagado",
 				offAt: relay.offAt,
@@ -67,7 +67,7 @@ app.controller('RoomCtrl', function ($scope, socket) {
 
 	$scope.devices = [
 		{
-			id: 1, image: 'images/extractor.png', name: 'Extractor', status: 'Encendido',
+			id: 1, image: 'extractor.png', name: 'Extractor', status: 'Encendido',
 			offAt: Date(),
 			actions: [
 				{ title: 'Encender', enabled: false, ip: '192.168.1.104', led: 1 },
@@ -75,7 +75,7 @@ app.controller('RoomCtrl', function ($scope, socket) {
 			]
 		},
 		{
-			id: 2, image: 'images/toallero.jpg', name: 'Toallero', status: 'Apagado',
+			id: 2, image: 'toallero.jpg', name: 'Toallero', status: 'Apagado',
 			actions: [
 				{ title: 'Encender', enabled: true, ip: '192.168.1.104', led: 2 },
 				{ title: 'Apagar', enabled: false, ip: '192.168.1.104', led: 2 }
@@ -93,15 +93,15 @@ app.controller('SettingsCtrl', function ($scope) {
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'pages/home.html',
+			templateUrl: 'app/components/home/home.html',
 			controller: 'HomeCtrl'
 		})
 		.when('/settings', {
-			templateUrl: 'pages/settings.html',
+			templateUrl: 'app/components/settings/settings.html',
 			controller: 'SettingsCtrl'
 		})
 		.when('/room', {
-			templateUrl: 'pages/room.html',
+			templateUrl: 'app/components/room/room.html',
 			controller: 'RoomCtrl'
 		})
 		.otherwise({
