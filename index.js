@@ -4,6 +4,12 @@ var http = require('http');
 var server = http.Server(app);
 var io = require('socket.io')(server);
 var path = require('path');
+var bodyParser = require('body-parser');
+
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 

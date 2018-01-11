@@ -13,6 +13,10 @@ angular.module("app")
 				templateUrl: 'app/components/room/room.html',
 				controller: 'RoomCtrl'
 			})
+			.when('/room-add', {
+				templateUrl: 'app/components/room/room-add.html',
+				controller: 'RoomAddCtrl'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});
