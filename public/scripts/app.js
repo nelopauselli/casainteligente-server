@@ -32,8 +32,15 @@ app.factory('Room', ['$resource', function ($resource) {
 	});
 }]);
 
-app.controller('HomeCtrl', ['$scope', 'Room', function ($scope, room) {
-	$scope.rooms = room.query();
+app.component('roomList', {
+	templateUrl: 'components/room-list.html',
+	controller: ['$scope','Room', function RoomListController($scope, Room) {
+		$scope.rooms = Room.query();
+	}]
+});
+
+app.controller('HomeCtrl', ['$scope', function ($scope) {
+	
 }]);
 
 app.controller('RoomCtrl', function ($scope, socket) {
