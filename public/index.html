@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" ng-app="app">
 
 <head>
 	<title>Casa Inteligente</title>
@@ -14,7 +14,7 @@
 
 	<link rel="stylesheet" href="/assets/lib/bootstrap/dist/css/bootstrap.min.css">
 
-	 <!-- AngularJs -->
+	<!-- AngularJs -->
 	<script src="/assets/lib/angular/angular.min.js"></script>
 	<script src="/assets/lib/angular-resource/angular-resource.min.js"></script>
 	<script src="/assets/lib/angular-route/angular-route.min.js"></script>
@@ -41,28 +41,26 @@
 
 </head>
 
-<body ng-app="app">
-	<div ng-controller="HomeCtrl">
-		<header>
-			<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-				<a href="/" class="navbar-brand mb-0 h1">Casa Inteligente</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-				 aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+<body ng-controller="HomeCtrl">
+	<header>
+		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+			<a href="/" class="navbar-brand mb-0 h1">Casa Inteligente</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item" role="presentation">
-							<a class="nav-link" href="/settings">Configuraci&oacute;n</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<main class="container-fluid">
-			<div ng-view></div>
-	</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item" role="presentation">
+						<a class="nav-link" href="/settings">Configuraci&oacute;n</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div class="container-fluid">
+		<div ng-view></div>
 	</div>
 
 	<script src="/assets/lib/jquery/dist/jquery.slim.min.js"></script>

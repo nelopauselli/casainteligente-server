@@ -15,6 +15,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/api", require("./controllers"));
 
+app.get("*", function(req, res){
+	res.sendFile(path.join(__dirname, 'public/index.html'))
+});
+
 io.on('connection', function (socket) {
 	console.log('a user connected');
 	socket.on('disconnect', function () {
