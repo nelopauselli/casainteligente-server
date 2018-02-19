@@ -94,6 +94,7 @@ io.on('connection', function (socket) {
 	});
 	socket.on('join', function(msg){
 		console.log('join: ', msg);
+		socket.emit('messages', 'Hello from server');
 	})
 });
 
