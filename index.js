@@ -92,6 +92,9 @@ io.on('connection', function (socket) {
 		req.write(body);
 		req.end();
 	});
+	socket.on('join', function(msg){
+		console.log('join: ', msg);
+	})
 });
 
 var port = process.env.PORT || 3000;
