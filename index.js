@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/api", require("./controllers"));
 
-app.get("*", function(req, res){
+app.get("*", function (req, res) {
 	res.sendFile(path.join(__dirname, 'public/index.html'))
 });
 
@@ -92,10 +92,14 @@ io.on('connection', function (socket) {
 		req.write(body);
 		req.end();
 	});
-	socket.on('join', function(msg){
+	socket.on('join', function (msg) {
 		console.log('join: ', msg);
 		socket.emit('messages', 'Hello from server');
 	})
+});
+
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+	console.log('addr: ' + add);
 });
 
 var port = process.env.PORT || 3000;

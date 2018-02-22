@@ -5,6 +5,10 @@ angular.module("app")
 				templateUrl: 'app/components/home/home.html',
 				controller: 'HomeCtrl'
 			})
+			.when('/devices', {
+				templateUrl: 'app/components/devices/devices.html',
+				controller: 'DevicesCtrl'
+			})
 			.when('/settings', {
 				templateUrl: 'app/components/settings/settings.html',
 				controller: 'SettingsCtrl'

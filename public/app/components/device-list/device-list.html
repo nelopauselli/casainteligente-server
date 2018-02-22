@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="card col-md-3 col-lg-2" ng-repeat="d in devices">
+		<a href="/device/{{d.id}}">
+			<img class="card-img-top" ng-src="/assets/img/{{d.image}}" alt="">
+			<h2>{{d.name}}</h2>
+		</a>
+		<div class="card-body">
+			<div ng-repeat="c in d.components">
+				<h4 class="card-title">{{c.name}}</h4>
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary" ng-repeat="action in c.actions" ng-click="do(c, action)">{{action.name}}</button>
+				</div>
+				<span class="text-info">{{c.status}}</span>
+				<hr />
+			</div>
+		</div>
+	</div>
+</div>
