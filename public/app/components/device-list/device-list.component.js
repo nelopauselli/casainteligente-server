@@ -17,6 +17,7 @@ function DeviceListController($scope, $http, deviceService) {
 				console.log("POST to " + url + " success");
 				console.log(response.data);
 				component.status = response.data.status;
+				component.statusText = response.data.statusText;
 				component.actions = response.data.actions;
 			}, function (error) {
 				console.error("error on POST to " + url + ": " + error);
