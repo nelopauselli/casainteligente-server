@@ -10,15 +10,15 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     if (req.body != undefined) {
-        var device = {};
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-        device.ip = ip.startsWith('::ffff:')
-            ? ip.replace('::ffff:', '')
-            : ip;
+        var device = {
+            name: req.body.name,
+            ip: ip.replace('::ffff:', ''),
+            components: []
+        };
         device.url = 'http://' + device.ip;
 
-        device.components = [];
         req.body.components.forEach(url => {
             var componentUrl = device.url + url;
             request(componentUrl, function (error, response, body) {
