@@ -9,7 +9,14 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     var device = req.body;
-    console.log("new device: ", device);
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+    device.ip = ip.startsWith('::ffff:')
+        ? ip.replace('::ffff:', '')
+        : ip;
+
+    console.log("new device: ");
+    console.dir(device);
 
     if (device != undefined) {
         devices.push(device);
