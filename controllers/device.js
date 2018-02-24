@@ -1,5 +1,7 @@
 var express = require('express');
 var request = require('request');
+var urljoin = require('url-join');
+
 var router = express.Router();
 
 var devices = [];
@@ -17,10 +19,10 @@ router.post('/', function (req, res) {
             ip: ip.replace('::ffff:', ''),
             components: []
         };
-        device.url = 'http://' + device.ip;
+        device.url = 'http://' + device.ip + "/";
 
-        req.body.components.forEach(url => {
-            var componentUrl = device.url + url;
+        req.body.components.forEach(path => {
+            var componentUrl = urljoin(device.url, path);
             request(componentUrl, function (error, response, body) {
                 if (error) console.error(error);
                 else {

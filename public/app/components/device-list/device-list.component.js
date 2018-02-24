@@ -10,7 +10,7 @@ function DeviceListController($scope, $http, deviceService) {
 	$scope.devices = deviceService.query();
 
 	$scope.do = function (component, action) {
-		var url = component.url + action.url;
+		var url = component.url + action.path;
 		console.log(url);
 		$http.post(url)
 			.then(function (response) {
