@@ -37,6 +37,11 @@ router.post('/', function (req, res) {
         console.log("new device: ");
         console.dir(device);
 
+        var indexOfSame = devices.indexOf(d=>{return d.ip==device.ip});
+        if(indexOfSame){
+            devices.splice(indexOfSame);
+        }
+
         devices.push(device);
         res.status(201).send(device);
     }
