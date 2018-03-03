@@ -11,3 +11,7 @@ body .container-fluid {
 	bottom: 47px;
 	right: 10px;
 }
+
+.clock{
+	color: green;
+}
