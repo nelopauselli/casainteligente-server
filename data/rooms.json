@@ -5,8 +5,16 @@
         "topic": "/cullen/baño2",
         "metrics": [
             {
-                "name": "dht",
-                "topic": "/cullen/baño2/dht"
+                "name": "Temperatura",
+                "topic": "/cullen/baño2/dht",
+                "property":"temperature",
+                "unit": "°C"
+            },
+            {
+                "name": "humedad",
+                "topic": "/cullen/baño2/dht",
+                "property":"humidity",
+                "unit": "%"
             }
         ],
         "devices": [

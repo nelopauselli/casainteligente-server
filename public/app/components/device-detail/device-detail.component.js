@@ -1,15 +1,15 @@
 angular.module("app")
 	.component('deviceDetail', {
 		templateUrl: 'app/components/device-detail/device-detail.html',
-		controller: DeviceListController,
+		controller: DeviceDetailController,
 		bindings: {
 			device: '<'
 		}
 	});
 
-DeviceListController.$inject = ['$scope', 'socket'];
+DeviceDetailController.$inject = ['$scope', 'socket'];
 
-function DeviceListController($scope, socket) {
+function DeviceDetailController($scope, socket) {
 	ctrl = this;
 
 	ctrl.$onInit = function () {
