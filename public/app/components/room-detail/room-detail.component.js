@@ -13,7 +13,6 @@ function RoomDetailController($scope, socket) {
 	ctrl = this;
 
 	ctrl.$onInit = function () {
-		console.log(ctrl.room);
 		$scope.room = ctrl.room;
 	};
 }

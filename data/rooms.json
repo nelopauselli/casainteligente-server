@@ -61,5 +61,72 @@
                 "status": "/cullen/baño2/toallero"
             }
         ]
+    },
+    {
+        "id": "666",
+        "name": "comedor",
+        "topic": "/cullen/comedor",
+        "metrics": [
+            {
+                "name": "Temperatura",
+                "topic": "/cullen/comedor/dht",
+                "property":"temperature",
+                "unit": "°C"
+            },
+            {
+                "name": "humedad",
+                "topic": "/cullen/comedor/dht",
+                "property":"humidity",
+                "unit": "%"
+            }
+        ],
+        "devices": [
+            {
+                "name": "extractor",
+                "topic": "/cullen/comedor/relay1",
+                "actions": [
+                    {
+                        "display": "on",
+                        "message": "turn on"
+                    },
+                    {
+                        "display": "off",
+                        "message": "turn off"
+                    },
+                    {
+                        "display": "+30m",
+                        "message": "+30m"                        
+                    },
+                    {
+                        "display": "+1h",
+                        "message": "+1h"                        
+                    }
+                ],
+                "status": "/cullen/comedor/extractor"
+            },
+            {
+                "name": "toallero",
+                "topic": "/cullen/comedor/relay2",
+                "actions": [
+                    {
+                        "display": "on",
+                        "message": "turn on"
+                    },
+                    {
+                        "display": "off",
+                        "message": "turn off"
+                    },
+                    {
+                        "display": "+30m",
+                        "message": "+30m"                        
+                    },
+                    {
+                        "display": "+1h",
+                        "message": "+1h"                        
+                    }
+                ],
+                "status": "/cullen/comedor/toallero"
+            }
+        ]
     }
 ]
