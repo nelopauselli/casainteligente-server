@@ -1,0 +1,11 @@
+<span class="topic">{{room.topic}}</span>
+<h5 class="card-title">{{room.name}}</h5>
+<p ng-repeat="metric in room.metrics">
+	<span class="topic">{{metric.topic}}</span>
+	{{metric.name}}
+</p>
+<ul class="list-group list-group-flush">
+	<li class="list-group-item" ng-repeat="device in room.devices">
+		<device-detail device="device"></device-detail>
+	</li>
+</ul>

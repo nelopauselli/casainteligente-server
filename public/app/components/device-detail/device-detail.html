@@ -1,0 +1,8 @@
+<span class="topic">{{device.topic}}</span>
+{{device.name}} - {{device.state}}
+<div>
+	<div class="btn-group">
+		<button class="btn btn-xs btn-default" ng-repeat="action in device.actions" ng-click="$parent.invoke(device.topic, action.message)">{{action.display}}
+		</button>
+	</div>
+</div>

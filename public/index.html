@@ -27,16 +27,13 @@
 	<script src="app/components/device.service.js"></script>
 
 	<!-- Components -->
-	<script src="app/components/clock/clock.component.js"></script>
 	<script src="app/components/room/room-list.component.js"></script>
 	<script src="app/components/room/room-add.component.js"></script>
-	<script src="app/components/device-list/device-list.component.js"></script>
+	<script src="app/components/room-detail/room-detail.component.js"></script>
+	<script src="app/components/device-detail/device-detail.component.js"></script>
 
 	<!-- Controllers -->
 	<script src="app/components/home/home.controller.js"></script>
-	<script src="app/components/devices/devices.controller.js"></script>
-	<script src="app/components/room/room.controller.js"></script>
-	<script src="app/components/settings/settings.controller.js"></script>
 
 	<!-- Config -->
 	<script src="app/app.config.js"></script>
@@ -47,11 +44,12 @@
 	<header>
 		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 			<a href="/" class="navbar-brand mb-0 h1">Casa Inteligente</a>
+			<!--
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 			 aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
+			
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item" role="presentation">
@@ -62,10 +60,7 @@
 					</li>
 				</ul>
 			</div>
-
-			<div class="navbar-right">
-				<clock></clock>
-			</div>
+			-->
 		</nav>
 	</header>
 	<div class="container-fluid">
@@ -79,12 +74,6 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script>  
 		var socket = io.connect('http://localhost:3000');
-		socket.on('connect', function(data) {
-			socket.emit('join', 'Hello World from client');
-		});
-		socket.on('messages', function(data) {
-			console.log(data);
-        });
 	</script>
 
 </body>

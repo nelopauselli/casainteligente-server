@@ -1,6 +1,6 @@
 angular.module("app")
-	.controller('HomeCtrl', ['$scope', homeController]);
+	.controller('HomeCtrl', ['$scope', HomeController]);
 
-function homeController($scope) {
+function HomeController($scope) {
 
 }

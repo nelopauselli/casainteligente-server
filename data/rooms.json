@@ -1,0 +1,57 @@
+[
+    {
+        "id": "1234",
+        "name": "baño 2",
+        "topic": "/cullen/baño2",
+        "metrics": [
+            {
+                "name": "dht",
+                "topic": "/cullen/baño2/dht"
+            }
+        ],
+        "devices": [
+            {
+                "name": "extractor",
+                "topic": "/cullen/baño2/relay1",
+                "actions": [
+                    {
+                        "display": "on",
+                        "message": "turn on",
+                        "state": [
+                            "state off"
+                        ]
+                    },
+                    {
+                        "display": "off",
+                        "message": "turn off",
+                        "state": [
+                            "state on"
+                        ]
+                    }
+                ],
+                "status": "/cullen/baño2/extractor"
+            },
+            {
+                "name": "toallero",
+                "topic": "/cullen/baño2/relay2",
+                "actions": [
+                    {
+                        "display": "on",
+                        "message": "turn on",
+                        "state": [
+                            "state off"
+                        ]
+                    },
+                    {
+                        "display": "off",
+                        "message": "turn off",
+                        "state": [
+                            "state on"
+                        ]
+                    }
+                ],
+                "status": "/cullen/baño2/toallero"
+            }
+        ]
+    }
+]
