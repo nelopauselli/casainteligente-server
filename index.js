@@ -22,10 +22,7 @@ app.get("*", function (req, res) {
 });
 
 //SOCKET
-var socketIO;
 io.on('connection', function (socket) {
-	socketIO = socket;
-	
 	socket.on('action', function (msg) {
 		var args = JSON.parse(msg);
 		console.log(args);
@@ -47,8 +44,7 @@ client.on('connect', function () {
 
 client.on('message', function (topic, message) {
 	console.log(topic, ": ", message.toString());
-	if (socketIO != undefined)
-		socketIO.emit("events", JSON.stringify({ topic: topic, message: message.toString() }));
+	io.sockets.emit("events", JSON.stringify({ topic: topic, message: message.toString() }));
 });
 //MQTT END
 
