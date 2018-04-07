@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var fs = require('fs');
-var rooms = JSON.parse(fs.readFileSync('data/rooms.json', 'utf8'));
+var path = require('path');
+var rooms = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/rooms.json'), 'utf8'));
 
 router.get('/', function (req, res) {
   res.json(rooms);
