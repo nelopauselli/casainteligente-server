@@ -24,17 +24,19 @@
                 "actions": [
                     {
                         "display": "on",
-                        "message": "turn on",
-                        "state": [
-                            "state off"
-                        ]
+                        "message": "turn on"
                     },
                     {
                         "display": "off",
-                        "message": "turn off",
-                        "state": [
-                            "state on"
-                        ]
+                        "message": "turn off"
+                    },
+                    {
+                        "display": "+30m",
+                        "message": "+30m"                        
+                    },
+                    {
+                        "display": "+1h",
+                        "message": "+1h"                        
                     }
                 ],
                 "status": "/cullen/baño2/extractor"
@@ -45,17 +47,19 @@
                 "actions": [
                     {
                         "display": "on",
-                        "message": "turn on",
-                        "state": [
-                            "state off"
-                        ]
+                        "message": "turn on"
                     },
                     {
                         "display": "off",
-                        "message": "turn off",
-                        "state": [
-                            "state on"
-                        ]
+                        "message": "turn off"
+                    },
+                    {
+                        "display": "+30m",
+                        "message": "+30m"                        
+                    },
+                    {
+                        "display": "+1h",
+                        "message": "+1h"                        
                     }
                 ],
                 "status": "/cullen/baño2/toallero"
