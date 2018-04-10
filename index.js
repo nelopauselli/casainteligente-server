@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use("/esp/update", require("./ota"));
 app.use("/api", require("./controllers"));
 
 app.get("*", function (req, res) {
