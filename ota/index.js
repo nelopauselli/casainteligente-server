@@ -32,7 +32,7 @@ router.get("/", function (req, res) {
                     }
                     else {
                         console.log(`no updates for ${firmware}`)
-                        res.status(302).end();
+                        res.status(302).send("DEVICE UPDATED");
                     }
                 });
             }
