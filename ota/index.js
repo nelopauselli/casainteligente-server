@@ -31,8 +31,8 @@ router.get("/", function (req, res) {
                         res.sendFile(firmwarePath);
                     }
                     else {
-                        console.log(`no updates for ${firmware}`)
-                        res.status(302).send("DEVICE UPDATED");
+                        console.log(`Device with mac ${firmware} is updated`)
+                        res.status(304).end();
                     }
                 });
             }
