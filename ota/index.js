@@ -32,7 +32,7 @@ router.get("/", function (req, res) {
                     }
                     else {
                         console.log(`no updates for ${firmware}`)
-                        res.status(302).send("");
+                        res.status(302).end();
                     }
                 });
             }
@@ -40,12 +40,12 @@ router.get("/", function (req, res) {
                 console.log(`file ${firmwarePath} not found`);
 
                 console.log("unknown board");
-                res.status(404).send("NOT FOUND");
+                res.status(404).end();
             }
         });
     }
     else {
-        res.status(404).send("NOT FOUND");
+        res.status(404).end();
     }
 
 });
