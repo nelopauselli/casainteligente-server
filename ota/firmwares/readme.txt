@@ -1,0 +1,1 @@
+aca van los .bin de actualización con la MAC del dispositivo a actualizar como nombre del archivo

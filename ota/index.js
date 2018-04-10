@@ -15,6 +15,8 @@ router.get("/", function (req, res) {
     var md5onBoard = req.headers["x-esp8266-sketch-md5"];
 
     if (mac & md5onBoard) {
+        console.log(`buscando actualización para ${mac}...`);
+
         var firmware = mac.replace(RegExp(":", 'g'), "") + ".bin";
         var firmwarePath = path.join(firmwareFolder, firmware);
 
