@@ -29,3 +29,15 @@ body .container-fluid {
 		float: right;
 	}
 }
+
+.logs {
+	background: black;
+	color: green;
+	height: 200px;
+	overflow: auto;
+}
+
+.logs ul{
+	list-style: none;
+	padding: 0;
+}
