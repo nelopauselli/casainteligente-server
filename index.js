@@ -50,7 +50,7 @@ io.on('connection', function (socket) {
 client.on('connect', function () {
 	console.log("connected");
 
-	client.subscribe('/cullen/#', function (err, granted) {
+	client.subscribe('/#', function (err, granted) {
 		if (err) console.error(err);
 	});
 });

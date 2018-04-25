@@ -2,17 +2,17 @@
     {
         "id": "1234",
         "name": "baño 2",
-        "topic": "/cullen/baño2",
+        "topic": "/casa/baño",
         "metrics": [
             {
                 "name": "Temperatura",
-                "topic": "/cullen/baño2/dht",
+                "topic": "/casa/baño/dht",
                 "property":"temperature",
                 "unit": "°C"
             },
             {
                 "name": "humedad",
-                "topic": "/cullen/baño2/dht",
+                "topic": "/casa/baño/dht",
                 "property":"humidity",
                 "unit": "%"
             }
@@ -20,7 +20,7 @@
         "devices": [
             {
                 "name": "extractor",
-                "topic": "/cullen/baño2/relay1",
+                "topic": "/casa/baño/extractor",
                 "actions": [
                     {
                         "display": "on",
@@ -39,11 +39,11 @@
                         "message": "+1h"                        
                     }
                 ],
-                "status": "/cullen/baño2/extractor"
+                "status": "/casa/baño/extractor"
             },
             {
                 "name": "toallero",
-                "topic": "/cullen/baño2/relay2",
+                "topic": "/casa/baño/toallero",
                 "actions": [
                     {
                         "display": "on",
@@ -62,11 +62,11 @@
                         "message": "+1h"                        
                     }
                 ],
-                "status": "/cullen/baño2/toallero"
+                "status": "/casa/baño/toallero"
             },
             {
                 "name": "luz",
-                "topic": "/cullen/baño2/light",
+                "topic": "/casa/baño/light",
                 "actions": [
                     {
                         "display": "on",
@@ -77,74 +77,7 @@
                         "message": "turn off"
                     }
                 ],
-                "status": "/cullen/baño2/luz"
-            }
-        ]
-    },
-    {
-        "id": "666",
-        "name": "comedor",
-        "topic": "/cullen/comedor",
-        "metrics": [
-            {
-                "name": "Temperatura",
-                "topic": "/cullen/comedor/dht",
-                "property":"temperature",
-                "unit": "°C"
-            },
-            {
-                "name": "humedad",
-                "topic": "/cullen/comedor/dht",
-                "property":"humidity",
-                "unit": "%"
-            }
-        ],
-        "devices": [
-            {
-                "name": "extractor",
-                "topic": "/cullen/comedor/relay1",
-                "actions": [
-                    {
-                        "display": "on",
-                        "message": "turn on"
-                    },
-                    {
-                        "display": "off",
-                        "message": "turn off"
-                    },
-                    {
-                        "display": "+30m",
-                        "message": "+30m"                        
-                    },
-                    {
-                        "display": "+1h",
-                        "message": "+1h"                        
-                    }
-                ],
-                "status": "/cullen/comedor/extractor"
-            },
-            {
-                "name": "toallero",
-                "topic": "/cullen/comedor/relay2",
-                "actions": [
-                    {
-                        "display": "on",
-                        "message": "turn on"
-                    },
-                    {
-                        "display": "off",
-                        "message": "turn off"
-                    },
-                    {
-                        "display": "+30m",
-                        "message": "+30m"                        
-                    },
-                    {
-                        "display": "+1h",
-                        "message": "+1h"                        
-                    }
-                ],
-                "status": "/cullen/comedor/toallero"
+                "status": "/casa/baño/luz"
             }
         ]
     }
