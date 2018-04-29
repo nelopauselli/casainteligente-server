@@ -17,8 +17,9 @@ router.get("/", function (req, res) {
     if (mac && md5onBoard) {
         console.log(`buscando actualización para ${mac}...`);
 
-        var firmware = mac.replace(RegExp(":", 'g'), "") + ".bin";
-        var firmwarePath = path.join(firmwareFolder, firmware);
+        var firmware = "firmware.bin";
+        var folder = mac.replace(RegExp(":", 'g'), "");
+        var firmwarePath = path.join(firmwareFolder, folder, firmware);
 
         fs.exists(firmwarePath, function (exists) {
             if (exists) {
