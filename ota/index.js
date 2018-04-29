@@ -32,7 +32,7 @@ router.get("/", function (req, res) {
                         res.sendFile(firmwarePath);
                     }
                     else {
-                        console.log(`Device with mac ${firmware} is updated`)
+                        console.log(`Device with mac ${mac} is updated`)
                         res.status(304).end();
                     }
                 });
