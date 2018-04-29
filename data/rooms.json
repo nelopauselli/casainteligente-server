@@ -80,5 +80,88 @@
                 "status": "/casa/baño/luz"
             }
         ]
+    },
+
+    {
+        "id": "6666",
+        "name": "clone",
+        "topic": "/casa/clone",
+        "metrics": [
+            {
+                "name": "Temperatura",
+                "topic": "/casa/clone/dht",
+                "property":"temperature",
+                "unit": "°C"
+            },
+            {
+                "name": "humedad",
+                "topic": "/casa/clone/dht",
+                "property":"humidity",
+                "unit": "%"
+            }
+        ],
+        "devices": [
+            {
+                "name": "extractor",
+                "topic": "/casa/clone/extractor",
+                "actions": [
+                    {
+                        "display": "on",
+                        "message": "turn on"
+                    },
+                    {
+                        "display": "off",
+                        "message": "turn off"
+                    },
+                    {
+                        "display": "+30m",
+                        "message": "+30m"                        
+                    },
+                    {
+                        "display": "+1h",
+                        "message": "+1h"                        
+                    }
+                ],
+                "status": "/casa/clone/extractor"
+            },
+            {
+                "name": "toallero",
+                "topic": "/casa/clone/toallero",
+                "actions": [
+                    {
+                        "display": "on",
+                        "message": "turn on"
+                    },
+                    {
+                        "display": "off",
+                        "message": "turn off"
+                    },
+                    {
+                        "display": "+30m",
+                        "message": "+30m"                        
+                    },
+                    {
+                        "display": "+1h",
+                        "message": "+1h"                        
+                    }
+                ],
+                "status": "/casa/clone/toallero"
+            },
+            {
+                "name": "luz",
+                "topic": "/casa/clone/light",
+                "actions": [
+                    {
+                        "display": "on",
+                        "message": "turn on"
+                    },
+                    {
+                        "display": "off",
+                        "message": "turn off"
+                    }
+                ],
+                "status": "/casa/clone/luz"
+            }
+        ]
     }
 ]
