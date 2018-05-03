@@ -13,10 +13,14 @@
 
 	<link rel="stylesheet" href="/assets/lib/bootstrap/dist/css/bootstrap.min.css">
 
+	<script src="/assets/lib/moment/min/moment-with-locales.min.js"></script>
 	<!-- AngularJs -->
 	<script src="/assets/lib/angular/angular.min.js"></script>
 	<script src="/assets/lib/angular-resource/angular-resource.min.js"></script>
 	<script src="/assets/lib/angular-route/angular-route.min.js"></script>
+
+	<script src="/assets/lib/chart.js/dist/Chart.min.js"></script>
+	<script src= "https://cdn.rawgit.com/jtblin/angular-chart.js/1.0.3/angular-chart.js" type="text/javascript"> </script>
 
 	<script src="app/app.module.js"></script>
 	<script src="app/socket.factory.js"></script>
@@ -38,7 +42,6 @@
 
 	<!-- Config -->
 	<script src="app/app.config.js"></script>
-
 </head>
 
 <body ng-controller="HomeCtrl">
@@ -64,6 +67,7 @@
 			-->
 		</nav>
 	</header>
+
 	<div class="container-fluid">
 		<div ng-view></div>
 	</div>

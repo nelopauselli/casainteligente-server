@@ -88,6 +88,12 @@
         "topic": "/casa/clone",
         "metrics": [
             {
+                "name": "memory free",
+                "topic": "/casa/clone/device/memoryfree",
+                "property":"",
+                "unit": "bytes"
+            },
+            {
                 "name": "Temperatura",
                 "topic": "/casa/clone/dht",
                 "property":"temperature",

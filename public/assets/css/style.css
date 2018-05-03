@@ -41,3 +41,7 @@ body .container-fluid {
 	list-style: none;
 	padding: 0;
 }
+
+.canvas-holder .canvas {
+    width: 600px;
+}
