@@ -8,13 +8,15 @@
                 "name": "Temperatura",
                 "topic": "/casa/baño/dht",
                 "property":"temperature",
-                "unit": "°C"
+                "unit": "°C",
+                "bufferSize": 25 
             },
             {
                 "name": "humedad",
                 "topic": "/casa/baño/dht",
                 "property":"humidity",
-                "unit": "%"
+                "unit": "%",
+                "bufferSize": 70
             }
         ],
         "devices": [

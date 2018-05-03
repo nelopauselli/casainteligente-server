@@ -44,7 +44,7 @@ function MetricDetailController($scope, socket) {
 					$scope.metric.value = data.message;
 				}
 
-				if ($scope.data[0].length > 10)
+				if ($scope.data[0].length > ($scope.metric.bufferSize || 50))
 					$scope.data[0].shift();
 				$scope.data[0].push({
 					x: new Date(),
