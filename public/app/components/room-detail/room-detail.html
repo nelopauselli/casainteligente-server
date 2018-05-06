@@ -1,5 +1,12 @@
-<span class="topic">{{room.topic}}</span>
+<div class="float-right">
+    <button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
+        <i class="fas fa-question"></i>
+    </button>
+</div>
 <h5 class="card-title">{{room.name}}</h5>
+
+<div class="text-info" ng-show="topic.visible">[ {{room.topic}} ]</div>
+
 <p ng-repeat="metric in room.metrics">
 	<metric-detail metric="metric"></metric-detail>
 </p>

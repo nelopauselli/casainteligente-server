@@ -16,20 +16,6 @@ body .container-fluid {
 	color: green;
 }
 
-@media (max-width: 959px){
-	.topic {
-		display: none;
-	}
-}
-
-@media (min-width: 960px){
-	.topic {
-		font-style: italic;
-		font-size: 0.9em;
-		float: right;
-	}
-}
-
 .logs {
 	background: black;
 	color: green;

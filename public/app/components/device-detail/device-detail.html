@@ -1,5 +1,12 @@
-<span class="topic">{{device.topic}}</span>
+<div class="float-right">
+    <button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
+        <i class="fas fa-question"></i>
+    </button>
+</div>
 {{device.name}} - {{device.state}}
+
+<div class="text-info" ng-show="topic.visible">[ {{device.topic}} ]</div>
+
 <div>
 	<div class="btn-group">
 		<button class="btn btn-xs btn-default" ng-repeat="action in device.actions" ng-click="$parent.invoke(device.topic, action.message)">{{action.display}}
