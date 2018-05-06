@@ -1,17 +1,16 @@
 <div class="float-right">
-    <button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
-        <i class="fas fa-question"></i>
-    </button>
+	<button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
+		<i class="fas fa-question"></i>
+	</button>
 </div>
 <h5 class="card-title">{{room.name}}</h5>
-
 <div class="text-info" ng-show="topic.visible">[ {{room.topic}} ]</div>
+<hr/>
 
 <p ng-repeat="metric in room.metrics">
 	<metric-detail metric="metric"></metric-detail>
 </p>
-<ul class="list-group list-group-flush">
-	<li class="list-group-item" ng-repeat="device in room.devices">
-		<device-detail device="device"></device-detail>
-	</li>
-</ul>
+<div ng-repeat="device in room.devices">
+	<hr/>
+	<device-detail device="device"></device-detail>
+</div>
