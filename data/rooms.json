@@ -5,6 +5,12 @@
         "topic": "/casa/baño",
         "metrics": [
             {
+                "name": "memory free",
+                "topic": "/casa/baño/device/memoryfree",
+                "property":"",
+                "unit": "bytes"
+            },
+            {
                 "name": "Temperatura",
                 "topic": "/casa/baño/dht",
                 "property":"temperature",
@@ -171,5 +177,5 @@
                 "status": "/casa/clone/luz"
             }
         ]
-    }
+    }  
 ]
