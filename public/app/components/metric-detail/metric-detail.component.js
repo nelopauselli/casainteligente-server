@@ -12,8 +12,6 @@ MetricDetailController.$inject = ['$scope', 'socket'];
 function MetricDetailController($scope, socket) {
 	ctrl = this;
 
-
-
 	ctrl.$onInit = function () {
 		$scope.metric = ctrl.metric;
 
@@ -32,6 +30,7 @@ function MetricDetailController($scope, socket) {
 		$scope.onClick = function (points, evt) {
 			console.log(points, evt);
 		};
+		
 		socket.on('events', function (args) {
 			var data = JSON.parse(args);
 
