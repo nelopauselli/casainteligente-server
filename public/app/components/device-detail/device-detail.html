@@ -1,7 +1,7 @@
 <div class="float-right">
-    <button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
-        <i class="fas fa-question"></i>
-    </button>
+	<button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
+		<i class="fas fa-question"></i>
+	</button>
 </div>
 {{device.name}} - {{device.state}}
 
@@ -9,7 +9,8 @@
 
 <div>
 	<div class="btn-group">
-		<button class="btn btn-xs btn-default" ng-repeat="action in device.actions" ng-click="$parent.invoke(device.topic, action.message)">{{action.display}}
+		<button class="btn btn-xs btn-outline-warning" ng-repeat="action in device.actions" ng-click="$parent.invoke(device.topic, action.message)">
+			{{action.display}}
 		</button>
 	</div>
 </div>
