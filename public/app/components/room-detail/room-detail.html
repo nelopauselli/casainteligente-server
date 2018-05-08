@@ -1,16 +1,20 @@
-<div class="float-right">
-	<button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
-		<i class="fas fa-question"></i>
-	</button>
-</div>
-<h5 class="card-title">{{room.name}}</h5>
-<div class="text-info" ng-show="topic.visible">[ {{room.topic}} ]</div>
-<hr/>
-
-<p ng-repeat="metric in room.metrics">
-	<metric-detail metric="metric"></metric-detail>
-</p>
-<div ng-repeat="device in room.devices">
-	<hr/>
-	<device-detail device="device"></device-detail>
+<div class="card bg-light">
+	<div class="card-header">
+		<div class="float-right">
+			<button class="btn btn-sm btn-outline-info" ng-click="topic.visible = !topic.visible" ng-init="topic.visible = false">
+				<i class="fas fa-question"></i>
+			</button>
+		</div>
+		{{room.name}}
+		<div class="text-info" ng-show="topic.visible">[ {{room.topic}} ]</div>
+	</div>
+	<div class="card-body">
+		<div ng-repeat="metric in room.metrics">
+			<metric-detail metric="metric"></metric-detail>
+		</div>
+		<div ng-repeat="device in room.devices">
+			<hr/>
+			<device-detail device="device"></device-detail>
+		</div>
+	</div>
 </div>

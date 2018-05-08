@@ -2,17 +2,17 @@ body .container-fluid {
 	padding: 60px 15px 0;
 }
 
-.card{
+.card {
 	margin: 1rem;
 }
 
-.actions{
+.actions {
 	position: absolute;
 	bottom: 47px;
 	right: 10px;
 }
 
-.clock{
+.clock {
 	color: green;
 }
 
@@ -23,11 +23,19 @@ body .container-fluid {
 	overflow: auto;
 }
 
-.logs ul{
+.logs ul {
 	list-style: none;
 	padding: 0;
 }
 
+.metric {
+	padding: 5px 0px;
+}
+
+.toolbar .btn {
+	margin-left: 5px;
+}
+
 .canvas-holder .canvas {
-    width: 600px;
+	width: 600px;
 }
