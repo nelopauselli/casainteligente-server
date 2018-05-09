@@ -1,15 +1,15 @@
 angular.module("app")
-	.component('metricDetail', {
-		templateUrl: 'app/components/metric-detail/metric-detail.html',
-		controller: MetricDetailController,
+	.component('metric', {
+		templateUrl: 'app/components/metric/metric.html',
+		controller: MetricController,
 		bindings: {
 			metric: '<'
 		}
 	});
 
-MetricDetailController.$inject = ['$scope', 'socket'];
+	MetricController.$inject = ['$scope', 'socket'];
 
-function MetricDetailController($scope, socket) {
+function MetricController($scope, socket) {
 	ctrl = this;
 
 	ctrl.$onInit = function () {

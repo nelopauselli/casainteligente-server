@@ -32,7 +32,6 @@ app.use("/api", require("./controllers"));
 
 app.get("*", function (req, res) {
 	console.error(req.path + " not found.");
-	res.sendFile(path.join(__dirname, 'public/index.html'))
 });
 
 //SOCKET

@@ -1,0 +1,16 @@
+<div class="card-actions">
+	<md-button class="md-fab md-mini" aria-label="Show topic" ng-click="topicVisible = !topicVisible" ng-init="topicVisible = false" hide-xs>
+		<i class="fas fa-question"></i>
+	</md-button>
+</div>
+{{name}} - {{state}}
+
+<div class="text-info" ng-show="topicVisible">[ {{topic}} ]</div>
+
+<div>
+	<div class="toolbar">
+		<md-button class="md-raised md-mini" ng-repeat="action in actions" aria-label="{{action}}" ng-click="$parent.invoke(topic, action.message)">
+			{{action.display}}
+		</md-button>
+	</div>
+</div>

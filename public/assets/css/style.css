@@ -1,41 +1,43 @@
-body .container-fluid {
-	padding: 60px 15px 0;
+md-toolbar>h3 {
+    text-align: center;
 }
 
-.card {
-	margin: 1rem;
+md-list-item>button {
+    width: 100%;
+    text-align: left !important;
 }
 
-.actions {
-	position: absolute;
-	bottom: 47px;
-	right: 10px;
+#content {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
 }
 
-.clock {
-	color: green;
+md-list-item .avatar {
+    width: 64px;
+    height: 48px;
 }
 
-.logs {
-	background: black;
-	color: green;
-	height: 200px;
-	overflow: auto;
+#content .avatar {
+    width: 128px;
+    height: 128px;
+}
+.avatar {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    vertical-align: middle;
+    zoom: .7;
+    transform: translateZ(0);
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
 }
 
-.logs ul {
-	list-style: none;
-	padding: 0;
+.card-actions {
+    float: right;
 }
 
 .metric {
-	padding: 5px 0px;
-}
-
-.toolbar .btn {
-	margin-left: 5px;
-}
-
-.canvas-holder .canvas {
-	width: 600px;
+    min-height: 52px;
 }

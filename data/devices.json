@@ -7,25 +7,25 @@
             {
                 "name": "memory free",
                 "topic": "/casa/baño/device/memoryfree",
-                "property":"",
+                "property": "",
                 "unit": "bytes"
             },
             {
                 "name": "Temperatura",
                 "topic": "/casa/baño/dht",
-                "property":"temperature",
+                "property": "temperature",
                 "unit": "°C",
-                "bufferSize": 25 
+                "bufferSize": 25
             },
             {
                 "name": "humedad",
                 "topic": "/casa/baño/dht",
-                "property":"humidity",
+                "property": "humidity",
                 "unit": "%",
                 "bufferSize": 70
             }
         ],
-        "devices": [
+        "components": [
             {
                 "name": "extractor",
                 "topic": "/casa/baño/extractor",
@@ -40,11 +40,11 @@
                     },
                     {
                         "display": "+30m",
-                        "message": "+30m"                        
+                        "message": "+30m"
                     },
                     {
                         "display": "+1h",
-                        "message": "+1h"                        
+                        "message": "+1h"
                     }
                 ],
                 "status": "/casa/baño/extractor"
@@ -63,11 +63,11 @@
                     },
                     {
                         "display": "+30m",
-                        "message": "+30m"                        
+                        "message": "+30m"
                     },
                     {
                         "display": "+1h",
-                        "message": "+1h"                        
+                        "message": "+1h"
                     }
                 ],
                 "status": "/casa/baño/toallero"
@@ -98,23 +98,23 @@
             {
                 "name": "memory free",
                 "topic": "/casa/clone/device/memoryfree",
-                "property":"",
+                "property": "",
                 "unit": "bytes"
             },
             {
                 "name": "Temperatura",
                 "topic": "/casa/clone/dht",
-                "property":"temperature",
+                "property": "temperature",
                 "unit": "°C"
             },
             {
                 "name": "humedad",
                 "topic": "/casa/clone/dht",
-                "property":"humidity",
+                "property": "humidity",
                 "unit": "%"
             }
         ],
-        "devices": [
+        "components": [
             {
                 "name": "extractor",
                 "topic": "/casa/clone/extractor",
@@ -129,11 +129,11 @@
                     },
                     {
                         "display": "+30m",
-                        "message": "+30m"                        
+                        "message": "+30m"
                     },
                     {
                         "display": "+1h",
-                        "message": "+1h"                        
+                        "message": "+1h"
                     }
                 ],
                 "status": "/casa/clone/extractor"
@@ -152,11 +152,11 @@
                     },
                     {
                         "display": "+30m",
-                        "message": "+30m"                        
+                        "message": "+30m"
                     },
                     {
                         "display": "+1h",
-                        "message": "+1h"                        
+                        "message": "+1h"
                     }
                 ],
                 "status": "/casa/clone/toallero"
@@ -177,5 +177,5 @@
                 "status": "/casa/clone/luz"
             }
         ]
-    }  
+    }
 ]

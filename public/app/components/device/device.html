@@ -1,0 +1,20 @@
+<div class="card-actions">
+	<md-button class="md-fab md-mini" aria-label="Show topic" ng-click="topicVisible = !topicVisible" ng-init="topicVisible = false"
+	 hide-xs>
+		<i class="fas fa-question"></i>
+	</md-button>
+</div>
+<h1>
+	<md-icon class="avatar" hide-xs>
+		<i class="fas fa-cogs fa-3x"></i>
+	</md-icon>
+	{{name}}
+</h1>
+<div class="text-info" ng-show="topicVisible">[ {{topic}} ]</div>
+<div ng-repeat="metric in metrics">
+	<metric metric="metric"></metric>
+</div>
+<div ng-repeat="component in components">
+	<hr/>
+	<component component="component"></component>
+</div>

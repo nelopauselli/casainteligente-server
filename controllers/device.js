@@ -4,9 +4,11 @@ var urljoin = require('url-join');
 
 var router = express.Router();
 
-var devices = [];
+var fs = require('fs');
+var path = require('path');
 
 router.get('/', function (req, res) {
+    var devices = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/devices.json'), 'utf8'));
     res.json(devices);
 });
 

@@ -1,0 +1,19 @@
+<div class="metric">
+    <div class="card-actions">
+        <md-button class="md-fab md-mini" aria-label="Show chart" ng-click="chartVisible = !chartVisible" ng-init="chartVisible = false">
+            <i class="fas fa-chart-line"></i>
+        </md-button>
+
+        <md-button class="md-fab md-mini" aria-label="Show topic" ng-click="topicVisible = !topicVisible" ng-init="topicVisible = false" hide-xs>
+            <i class="fas fa-question"></i>
+        </md-button>
+    </div>
+    {{metric.name}}: {{metric.value}} {{metric.unit}}
+
+    <div class="text-info" ng-show="topicVisible">[ {{metric.topic}} ]</div>
+
+    <div class="canvas-holder" ng-show="chartVisible">
+        <canvas class="chart chart-line" width="100" height="50" chart-data="data" chart-series="series" chart-options="options"
+            chart-legend="legend" chart-click="onClick"></canvas>
+    </div>
+</div>
