@@ -1,19 +1,30 @@
 <div class="metric">
-    <div class="card-actions">
-        <md-button class="md-fab md-mini" aria-label="Show chart" ng-click="chartVisible = !chartVisible" ng-init="chartVisible = false">
-            <i class="fas fa-chart-line"></i>
-        </md-button>
+    <div layout="column">
 
-        <md-button class="md-fab md-mini" aria-label="Show topic" ng-click="topicVisible = !topicVisible" ng-init="topicVisible = false" hide-xs>
-            <i class="fas fa-question"></i>
-        </md-button>
-    </div>
-    {{metric.name}}: {{metric.value}} {{metric.unit}}
+        <div layout="row" layout-align="end center">
+            <div flex>
+                {{metric.name}}: {{metric.value}} {{metric.unit}}
+            </div>
+            <div>
+                <md-button class="md-icon-button md-primary" aria-label="Show chart" ng-click="chartVisible = !chartVisible" ng-init="chartVisible = false">
+                    <i class="fas fa-chart-line"></i>
+                </md-button>
 
-    <div class="text-info" ng-show="topicVisible">[ {{metric.topic}} ]</div>
-
-    <div class="canvas-holder" ng-show="chartVisible">
-        <canvas class="chart chart-line" width="100" height="50" chart-data="data" chart-series="series" chart-options="options"
-            chart-legend="legend" chart-click="onClick"></canvas>
+                <md-button class="md-icon-button md-accent" aria-label="Show topic" ng-click="topicVisible = !topicVisible" ng-init="topicVisible = false"
+                    hide-xs>
+                    <md-tooltip>{{metric.topic}}</md-tooltip>
+                    <i class="fas fa-question"></i>
+                </md-button>
+            </div>
+        </div>
+        <div ng-show="topicVisible">
+            <div md-colors="{color:'accent'}">[ {{metric.topic}} ]</div>
+        </div>
+        <div>
+            <div class="canvas-holder" ng-show="chartVisible">
+                <canvas class="chart chart-line" width="100" height="50" chart-data="data" chart-series="series" chart-options="options"
+                    chart-legend="legend" chart-click="onClick" ng-show="data"></canvas>
+            </div>
+        </div>
     </div>
 </div>
