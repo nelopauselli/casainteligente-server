@@ -33,11 +33,3 @@ md-list-item .avatar {
     -webkit-transform: scale(.7);
     -moz-transform: scale(.7);
 }
-
-.card-actions {
-    float: right;
-}
-
-.metric {
-    min-height: 42px;
-}
