@@ -8,18 +8,6 @@ var bodyParser = require('body-parser');
 var mqtt = require('mqtt')
 var client = mqtt.connect('mqtt://192.168.1.10:1883')
 
-oldLogger = console.log;
-console.log = function (message) {
-	if (typeof message === 'object')
-		io.sockets.emit("logs", JSON.stringify(message));
-	else if (typeof message === 'string')
-		io.sockets.emit("logs", message);
-	else
-		io.sockets.emit("logs", message.toString());
-
-	oldLogger(message);
-};
-
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
