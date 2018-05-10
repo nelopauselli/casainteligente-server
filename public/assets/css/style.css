@@ -1,4 +1,7 @@
-md-toolbar>h3 {
+md-toolbar>h1,
+md-toolbar>h2,
+md-toolbar>h3,
+md-toolbar>h4 {
     text-align: center;
 }
 

@@ -24,17 +24,19 @@
 		<div>
 			<md-button class="md-icon-button md-accent" aria-label="Show topic" ng-click="topicVisible = !topicVisible" ng-init="topicVisible = false"
 			 hide-xs>
-				<md-tooltip>{{metric.topic}}</md-tooltip>
+				<md-tooltip>{{topic}}</md-tooltip>
 				<i class="fas fa-question"></i>
 			</md-button>
 		</div>
 	</div>
-
 	<div ng-repeat="metric in metrics">
 		<metric metric="metric"></metric>
 	</div>
+	<hr/>
 	<div ng-repeat="component in components">
-		<hr/>
 		<component component="component"></component>
+		<hr/>
 	</div>
+
+	<logs topic="topic"></logs>
 </div>

@@ -14,7 +14,6 @@ function ComponentController($scope, socket) {
 
 	ctrl.$onInit = function () {
 		socket.on('events', function (args) {
-			console.log(args);
 			var data = JSON.parse(args);
 
 			if ($scope.status == data.topic) {

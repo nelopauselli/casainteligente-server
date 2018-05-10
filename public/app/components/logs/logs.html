@@ -1,0 +1,35 @@
+<md-content md-whiteframe="16">
+	<md-toolbar layout="row">
+		<h3 flex>Logs</h3>
+		<md-switch ng-model="logVisible" aria-label="Show or Hide logs">
+		</md-switch>
+	</md-toolbar>
+	<md-list flex ng-show="logVisible">
+		<md-list-item ng-show="search">
+			<div class="md-list-item-text" layout="column">
+				<p>
+					Filter by: {{search.topic}}
+				</p>
+				<md-button class="md-secondary md-icon-button md-accent" ng-click="unfilter()" aria-label="remove filter">
+					<md-icon>
+						<i class="fas fa-trash"></i>
+					</md-icon>
+				</md-button>
+			</div>
+		</md-list-item>
+		<md-list-item ng-repeat="log in logs | filter:search">
+			<div class="md-list-item-text" layout="column">
+				<p>
+					<strong>{{ log.topic }}: </strong>
+					{{ log.message }}
+				</p>
+				<md-button class="md-secondary md-icon-button md-primary" ng-click="filterBy(log.topic)" aria-label="filter for {{log.topic}}"
+				 ng-show="!search">
+					<md-icon>
+						<i class="fas fa-filter"></i>
+					</md-icon>
+				</md-button>
+			</div>
+		</md-list-item>
+	</md-list>
+</md-content>
