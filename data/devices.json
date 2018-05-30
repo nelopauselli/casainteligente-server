@@ -112,12 +112,18 @@
                 "topic": "/casa/clone/dht",
                 "property": "humidity",
                 "unit": "%"
+            },
+            {
+                "name": "luz",
+                "topic": "/casa/clone/ldr",
+                "property": "value",
+                "unit": " L"
             }
         ],
         "components": [
             {
-                "name": "extractor",
-                "topic": "/casa/clone/extractor",
+                "name": "luz verde",
+                "topic": "/casa/clone/luz verde",
                 "actions": [
                     {
                         "display": "on",
@@ -136,11 +142,11 @@
                         "message": "+1h"
                     }
                 ],
-                "status": "/casa/clone/extractor"
+                "status": "/casa/clone/luz verde"
             },
             {
-                "name": "toallero",
-                "topic": "/casa/clone/toallero",
+                "name": "luz roja",
+                "topic": "/casa/clone/luz roja",
                 "actions": [
                     {
                         "display": "on",
@@ -159,7 +165,7 @@
                         "message": "+1h"
                     }
                 ],
-                "status": "/casa/clone/toallero"
+                "status": "/casa/clone/luz roja"
             },
             {
                 "name": "luz",
@@ -174,7 +180,7 @@
                         "message": "turn off"
                     }
                 ],
-                "status": "/casa/clone/luz"
+                "status": "/casa/clone/light"
             }
         ]
     }
