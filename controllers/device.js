@@ -7,40 +7,30 @@ var router = express.Router();
 var fs = require('fs');
 var path = require('path');
 
+var devices = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/devices.json'), 'utf8'));
+
 router.get('/', function (req, res) {
-    var devices = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/devices.json'), 'utf8'));
     res.json(devices);
 });
 
 router.post('/', function (req, res) {
+    console.log(req.headers);
+
     if (req.body != undefined) {
+        console.log(req.body);
+
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-        var device = {
-            name: req.body.name,
-            ip: ip.replace('::ffff:', ''),
-            components: []
-        };
-        device.url = 'http://' + device.ip + "/";
-
-        req.body.components.forEach(path => {
-            var componentUrl = urljoin(device.url, path);
-            request(componentUrl, function (error, response, body) {
-                if (error) console.error(error);
-                else {
-                    var component = JSON.parse(body);
-                    component.url = componentUrl;
-                    console.log(component);
-                    device.components.push(component);
-                }
-            });
-        });
+        var device = req.body;
+        device.topic = path.posix.join(device.topic, device.name);
+        device.metrics.forEach(m => m.topic = path.posix.join(device.topic, m.topic));
+        device.components.forEach(c => c.topic = path.posix.join(device.topic, c.topic));
 
         console.log("new device: ");
-        console.dir(device);
+        console.dir(JSON.stringify(device));
 
-        var indexOfSame = devices.indexOf(d=>{return d.ip==device.ip});
-        if(indexOfSame){
+        var indexOfSame = devices.indexOf(d => { return d.ip == device.ip });
+        if (indexOfSame != -1) {
             devices.splice(indexOfSame);
         }
 

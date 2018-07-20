@@ -16,8 +16,8 @@
 	</div>
 	<div>
 		<div class="toolbar">
-			<md-button class="md-raised md-mini" ng-repeat="action in actions" aria-label="{{action}}" ng-click="$parent.invoke(topic, action.message)">
-				{{action.display}}
+			<md-button class="md-raised md-mini" ng-repeat="action in actions" aria-label="{{action}}" ng-click="$parent.invoke(topic, action)">
+				{{action}}
 			</md-button>
 		</div>
 	</div>

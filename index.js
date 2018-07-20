@@ -5,8 +5,9 @@ var server = http.Server(app);
 var io = require('socket.io')(server);
 var path = require('path');
 var bodyParser = require('body-parser');
-var mqtt = require('mqtt')
-var client = mqtt.connect('mqtt://192.168.1.10:1883')
+var mqtt = require('mqtt');
+var client = mqtt.connect('mqtt://192.168.1.10:1883');
+//var client = mqtt.connect('mqtt://hvzaieuu:ka6xSDCDNxJe@m13.cloudmqtt.com:10600')
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -15,6 +16,11 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+	console.log(`[${req.method}] ${req.url}`);
+	next();
+});  
+  
 app.use("/esp/update", require("./ota"));
 app.use("/api", require("./controllers"));
 

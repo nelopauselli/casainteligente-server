@@ -16,7 +16,7 @@ function ComponentController($scope, socket) {
 		socket.on('events', function (args) {
 			var data = JSON.parse(args);
 
-			if ($scope.status == data.topic) {
+			if ($scope.topic == data.topic) {
 				$scope.state = data.message;
 			}
 		});
