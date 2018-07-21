@@ -50,16 +50,14 @@ client.on('connect', function () {
 });
 
 client.on('message', function (topic, message) {
-	console.log(topic + ": " + message.toString());
+	//console.log(topic + ": " + message.toString());
 	io.sockets.emit("events", JSON.stringify({ topic: topic, message: message.toString() }));
 });
 //MQTT END
 
-require('dns').lookup(require('os').hostname(), function (err, add, fam) {
-	console.log('addr: ' + add);
-});
-
 var port = process.env.PORT || 3000;
 server.listen(port, function () {
-	console.log('listening on *:' + port);
+	require('dns').lookup(require('os').hostname(), function (err, addr, fam) {
+		console.log(`listening on ${addr}: ${port}`);
+	});
 });
