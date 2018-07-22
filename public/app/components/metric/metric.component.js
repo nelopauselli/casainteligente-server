@@ -7,9 +7,9 @@ angular.module("app")
 		}
 	});
 
-	MetricController.$inject = ['$scope', 'socket'];
+MetricController.$inject = ['$scope', '$http', 'socket'];
 
-function MetricController($scope, socket) {
+function MetricController($scope, $http, socket) {
 	ctrl = this;
 
 	ctrl.$onInit = function () {
@@ -30,7 +30,7 @@ function MetricController($scope, socket) {
 		$scope.onClick = function (points, evt) {
 			console.log(points, evt);
 		};
-		
+
 		socket.on('events', function (args) {
 			var data = JSON.parse(args);
 
@@ -51,5 +51,27 @@ function MetricController($scope, socket) {
 				});
 			}
 		});
+
+		$http.get('/api/history?topic=' + $scope.metric.topic).then(
+			function (response) {
+				response.data.forEach(element => {
+					var value = undefined;
+
+					if ($scope.metric.property) {
+						var m = JSON.parse(element.data);
+						value = m[$scope.metric.property];
+					}
+					else {
+						value = element.data;
+					}
+
+					$scope.metric.value = value;
+					$scope.data[0].push({
+						x: element.date,
+						y: value
+					});
+				});
+			}
+		);
 	};
 }

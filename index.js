@@ -9,6 +9,8 @@ var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://192.168.1.10:1883');
 //var client = mqtt.connect('mqtt://hvzaieuu:ka6xSDCDNxJe@m13.cloudmqtt.com:10600')
 
+var historyRepository = require("./repositories/historyRepository.js")
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,6 +54,8 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
 	//console.log(topic + ": " + message.toString());
 	io.sockets.emit("events", JSON.stringify({ topic: topic, message: message.toString() }));
+
+	historyRepository.add(topic, message.toString());
 });
 //MQTT END
 
