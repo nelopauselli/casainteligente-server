@@ -3,11 +3,19 @@ var express = require('express'),
 
 var historyRepository = require("../repositories/historyRepository.js");
 
-router.get('/', function (req, res, next) {
-    historyRepository.getByTopic(req.query.topic, function (err, history) {
-        if (err) next(err);
-        else res.json(history);
+function HistoryController(io, client) {
+    router.get('/', function (req, res, next) {
+        historyRepository.getByTopic(req.query.topic, function (err, history) {
+            if (err) next(err);
+            else res.json(history);
+        });
     });
-});
 
-module.exports = router;
+    client.on('message', function (topic, message) {
+        //console.log(topic + ": " + message.toString());
+        io.sockets.emit("events", JSON.stringify({ topic: topic, message: message.toString() }));
+        historyRepository.add(topic, message.toString());
+    });
+    return router;
+}
+module.exports = HistoryController;
