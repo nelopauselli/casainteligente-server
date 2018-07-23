@@ -19,5 +19,4 @@ HistoryRepository.prototype.getByTopic = function (topic, callback) {
     callback(null, this.db[topic]);
 }
 
-var instance;
-module.exports = instance || (instance=new HistoryRepository());
+module.exports = new HistoryRepository();

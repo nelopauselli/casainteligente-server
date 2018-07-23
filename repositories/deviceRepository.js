@@ -1,9 +1,5 @@
-var fs = require('fs');
-var path = require('path');
-
 function DeviceRepository() {
-    //this.collection = [];
-    this.collection = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/devices.json'), 'utf8'));
+    this.collection = [];
 }
 
 DeviceRepository.prototype.add = function add(device) {
@@ -15,6 +11,4 @@ DeviceRepository.prototype.getAll = function (callback) {
     callback(null, this.collection);
 };
 
-var instance;
-
-module.exports = instance || (instance = new DeviceRepository()); 
+module.exports = new DeviceRepository();
