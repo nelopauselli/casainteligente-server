@@ -1,6 +1,5 @@
 [
     {
-        "id": "1234",
         "name": "baño 2",
         "topic": "/casa/baño",
         "metrics": [
@@ -29,63 +28,17 @@
             {
                 "name": "extractor",
                 "topic": "/casa/baño/extractor",
-                "actions": [
-                    {
-                        "display": "on",
-                        "message": "turn on"
-                    },
-                    {
-                        "display": "off",
-                        "message": "turn off"
-                    },
-                    {
-                        "display": "+30m",
-                        "message": "+30m"
-                    },
-                    {
-                        "display": "+1h",
-                        "message": "+1h"
-                    }
-                ],
-                "status": "/casa/baño/extractor"
+                "actions": ["turn on", "turn off", "+30m","+1h"]
             },
             {
                 "name": "toallero",
                 "topic": "/casa/baño/toallero",
-                "actions": [
-                    {
-                        "display": "on",
-                        "message": "turn on"
-                    },
-                    {
-                        "display": "off",
-                        "message": "turn off"
-                    },
-                    {
-                        "display": "+30m",
-                        "message": "+30m"
-                    },
-                    {
-                        "display": "+1h",
-                        "message": "+1h"
-                    }
-                ],
-                "status": "/casa/baño/toallero"
+                "actions": ["turn on", "turn off", "+30m","+1h"]
             },
             {
                 "name": "luz",
                 "topic": "/casa/baño/light",
-                "actions": [
-                    {
-                        "display": "on",
-                        "message": "turn on"
-                    },
-                    {
-                        "display": "off",
-                        "message": "turn off"
-                    }
-                ],
-                "status": "/casa/baño/luz"
+                "actions": ["turn on", "turn off"]
             }
         ]
     }
