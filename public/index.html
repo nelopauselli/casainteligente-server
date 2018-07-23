@@ -29,7 +29,7 @@
 		<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
 			<md-list ng-click="toggleMenu();">
 				<md-list-item ng-repeat="device in devices">
-					<md-button ng-click="select(device)">
+					<md-button ng-click="select(device)" ng-class="device.status">
 						<md-icon class="avatar">
 							<i class="fas fa-cogs fa-3x"></i>
 						</md-icon>

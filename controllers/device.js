@@ -16,9 +16,11 @@ function DeviceController(io) {
                         console.log(msg);
 
                         device.status = isAlive ? "online" : "offline";
-
                         io.sockets.emit('status', JSON.stringify({ ip: device.ip, status: device.status }));
                     });
+                } else {
+                    device.status = "unknown";
+                    io.sockets.emit('status', JSON.stringify({ ip: device.ip, status: device.status }));
                 }
             });
         });
@@ -36,6 +38,7 @@ function DeviceController(io) {
 
             var device = req.body;
             device.ip = ip.replace("::ffff:", "");
+            device.status = "online";
             device.topic = path.posix.join(device.topic, device.name);
             device.metrics.forEach(m => m.topic = path.posix.join(device.topic, m.topic));
             device.components.forEach(c => c.topic = path.posix.join(device.topic, c.topic));

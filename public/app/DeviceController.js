@@ -1,12 +1,21 @@
 angular.module("app")
     .controller('DeviceController', DeviceController);
 
-DeviceController.$inject = ['$scope', '$mdSidenav', 'deviceService'];
+DeviceController.$inject = ['$scope', '$mdSidenav', 'deviceService', 'socket'];
 
-function DeviceController($scope, $mdSidenav, deviceService) {
+function DeviceController($scope, $mdSidenav, deviceService, socket) {
     $scope.devices = deviceService.query(function () {
-            $scope.current = $scope.devices[0];
-        });
+        $scope.current = $scope.devices[0];
+    });
+
+    socket.on('status', function (args) {
+        console.log(args);
+        var data = JSON.parse(args);
+        var device = $scope.devices.find(d => d.ip == data.ip);
+        if (device) {
+            device.status = data.status;
+        }
+    });
 
     $scope.select = select;
     $scope.toggleMenu = toggleMenu;
