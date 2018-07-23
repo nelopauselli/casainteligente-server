@@ -1,8 +1,13 @@
 var express = require('express');
-var router = express.Router();
 
-router.use('/device', require("./device"))
-router.use('/datetime', require("./datetime"))
-router.use('/history', require("./history"))
+function Controllers(io) {
+    var router = express.Router();
 
-module.exports = router;
+    router.use('/device', require("./device")(io));
+    router.use('/datetime', require("./datetime"));
+    router.use('/history', require("./history"));
+
+    return router;
+}
+
+module.exports = Controllers;

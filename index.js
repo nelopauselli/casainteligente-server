@@ -9,7 +9,7 @@ var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://192.168.1.10:1883');
 //var client = mqtt.connect('mqtt://hvzaieuu:ka6xSDCDNxJe@m13.cloudmqtt.com:10600')
 
-var historyRepository = require("./repositories/historyRepository.js")
+var historyRepository = require("./repositories/HistoryRepository.js");
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -21,10 +21,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function (req, res, next) {
 	console.log(`[${req.method}] ${req.url}`);
 	next();
-});  
-  
+});
+
 app.use("/esp/update", require("./ota"));
-app.use("/api", require("./controllers"));
+app.use("/api", require("./controllers")(io));
 
 app.get("*", function (req, res) {
 	console.error(req.path + " not found.");
@@ -48,6 +48,12 @@ client.on('connect', function () {
 
 	client.subscribe('/#', function (err, granted) {
 		if (err) console.error(err);
+	});
+
+	client.publish("/devices/search", "definanse!", function (err, result) {
+		if (err) console.error(err);
+		else
+			console.log("Buscando dispositivos");
 	});
 });
 

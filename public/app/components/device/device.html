@@ -1,4 +1,4 @@
-<div layout="column">
+<div layout="column"  ng-class="status">
 	<div layout="row" layout-align="end top">
 		<div flex>
 			<div layout="row">
@@ -12,8 +12,11 @@
 				<div layout="column">
 					<div>
 						<h1>
-							{{name}}
+							{{name}} [{{status}}]
 						</h1>
+						<h2>
+							{{ip}}
+						</h2>
 					</div>
 					<div>
 						<span class="md-caption" ng-show="topicVisible" md-colors="{color:'accent'}">[ {{topic}} ]</span>
