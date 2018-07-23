@@ -17,11 +17,12 @@ router.post('/', function (req, res) {
     console.log(req.headers);
 
     if (req.body != undefined) {
-        console.log(req.body);
+        console.log(req.headers);
 
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
         var device = req.body;
+        device.ip = ip.replace("::ffff:", "");
         device.topic = path.posix.join(device.topic, device.name);
         device.metrics.forEach(m => m.topic = path.posix.join(device.topic, m.topic));
         device.components.forEach(c => c.topic = path.posix.join(device.topic, c.topic));
@@ -29,12 +30,9 @@ router.post('/', function (req, res) {
         console.log("new device: ");
         console.dir(JSON.stringify(device));
 
-        var indexOfSame = devices.indexOf(d => { return d.ip == device.ip });
-        if (indexOfSame != -1) {
-            devices.splice(indexOfSame);
-        }
-
+        devices = devices.filter(d => d.ip != device.ip);
         devices.push(device);
+        
         res.status(201).send(device);
     }
     else
