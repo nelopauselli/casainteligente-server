@@ -14,11 +14,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    console.log(req.headers);
-
     if (req.body != undefined) {
-        console.log(req.headers);
-
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
         var device = req.body;
@@ -32,7 +28,7 @@ router.post('/', function (req, res) {
 
         devices = devices.filter(d => d.ip != device.ip);
         devices.push(device);
-        
+
         res.status(201).send(device);
     }
     else
