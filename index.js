@@ -7,7 +7,6 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://192.168.1.10:1883');
-//var client = mqtt.connect('mqtt://hvzaieuu:ka6xSDCDNxJe@m13.cloudmqtt.com:10600')
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
