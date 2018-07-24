@@ -1,4 +1,8 @@
-var express = require('express');
+var express = require('express'),
+	dns = require('dns'),
+	os = require('os');
+
+var hostname = os.hostname();
 var app = express();
 var http = require('http');
 var server = http.Server(app);
@@ -8,8 +12,6 @@ var bodyParser = require('body-parser');
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://192.168.1.10:1883');
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -39,25 +41,34 @@ io.on('connection', function (socket) {
 });
 //SOCKET END
 
-//MQTT
-client.on('connect', function () {
-	console.log("connected");
-
-	client.subscribe('/#', function (err, granted) {
-		if (err) console.error(err);
-	});
-
-	client.publish("/devices/search", "definanse!", function (err, result) {
-		if (err) console.error(err);
-		else
-			console.log("Buscando dispositivos");
-	});
-});
-//MQTT END
-
 var port = process.env.PORT || 3000;
 server.listen(port, function () {
-	require('dns').lookup(require('os').hostname(), function (err, addr, fam) {
-		console.log(`listening on ${addr}: ${port}`);
+	dns.lookup(hostname, function (err, addr, fam) {
+		if (err) console.error(err);
+		else console.log(`listening on ${addr}:${port}`);
 	});
 });
+
+//MQTT
+client.on('connect', function () {
+	console.log("conexión establecida con broker mqtt")
+	client.subscribe('/#', function (err, granted) {
+		if (err) console.error(err);
+		else console.log(`subscripción al topic '/#' ${granted ? 'aceptada' : 'rechazada'}`);
+	});
+
+	setTimeout(() => {
+		// Le pedimos a los dispositivos que se autoregistren
+		dns.lookup(hostname, function (err, addr, fam) {
+			if (err) console.error(err);
+			else {
+				var target = `${addr}:${port}`;
+				client.publish("/devices/search", target, function (err) {
+					if (err) console.error(err);
+					else console.log("buscando dispositivos...");
+				});
+			}
+		});
+	}, 1000);
+});
+//MQTT END
