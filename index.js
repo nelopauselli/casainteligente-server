@@ -1,16 +1,35 @@
 var express = require('express'),
 	dns = require('dns'),
-	os = require('os');
+	os = require('os'),
+	mqtt = require('mqtt'),
+	http = require('http');
 
 var hostname = os.hostname();
 var app = express();
-var http = require('http');
+
 var server = http.Server(app);
 var io = require('socket.io')(server);
 var path = require('path');
 var bodyParser = require('body-parser');
-var mqtt = require('mqtt');
+
+//MQTT
 var client = mqtt.connect('mqtt://192.168.1.10:1883');
+client.on('connect', function () {
+	console.log("conexión establecida con broker mqtt")
+	client.subscribe('/#', function (err, granted) {
+		if (err) console.error(err);
+		else console.log(`subscripción al topic '/#' ${granted ? 'aceptada' : 'rechazada'}`);
+	});
+});
+//MQTT END
+
+function discovery(target) {
+	// Le pedimos a los dispositivos que se autoregistren
+	client.publish("/devices/search", target, function (err) {
+		if (err) console.error(err);
+		else console.log("buscando dispositivos...");
+	});
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -62,30 +81,18 @@ var port = process.env.PORT || 3000;
 server.listen(port, function () {
 	dns.lookup(hostname, function (err, addr, fam) {
 		if (err) console.error(err);
-		else console.log(`listening on ${addr}:${port}`);
+		else {
+			console.log(`listening on ${addr}:${port}`);
+
+			// Invitamos a los dispositivos a registrarse, los volvemos a invitar en 5 segundo y luego, cada 30 minutos repetimos la invitación.
+			var target = `${addr}:${port}`;
+			discovery(target);
+			setTimeout(function () {
+				discovery(target);
+				setInterval(function () {
+					discovery(target);
+				}, 30 * 60 * 1000);
+			}, 5 * 1000);
+		}
 	});
 });
-
-//MQTT
-client.on('connect', function () {
-	console.log("conexión establecida con broker mqtt")
-	client.subscribe('/#', function (err, granted) {
-		if (err) console.error(err);
-		else console.log(`subscripción al topic '/#' ${granted ? 'aceptada' : 'rechazada'}`);
-	});
-
-	setTimeout(() => {
-		// Le pedimos a los dispositivos que se autoregistren
-		dns.lookup(hostname, function (err, addr, fam) {
-			if (err) console.error(err);
-			else {
-				var target = `${addr}:${port}`;
-				client.publish("/devices/search", target, function (err) {
-					if (err) console.error(err);
-					else console.log("buscando dispositivos...");
-				});
-			}
-		});
-	}, 1000);
-});
-//MQTT END
