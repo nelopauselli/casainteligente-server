@@ -18,7 +18,7 @@ function LogsController($scope, socket) {
 
 		$scope.logs = [];
 		$scope.index = 0;
-		socket.on('events', function (args) {
+		socket.on('message', function (args) {
 			console.log(args);
 			var data = JSON.parse(args);
 

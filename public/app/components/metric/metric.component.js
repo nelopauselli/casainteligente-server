@@ -31,7 +31,7 @@ function MetricController($scope, $http, socket) {
 			console.log(points, evt);
 		};
 
-		socket.on('events', function (args) {
+		socket.on('message', function (args) {
 			var data = JSON.parse(args);
 
 			if ($scope.metric.topic == data.topic) {

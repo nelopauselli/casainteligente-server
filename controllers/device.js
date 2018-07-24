@@ -1,7 +1,8 @@
 var express = require('express'),
     path = require('path'),
     ping = require('ping');
-var deviceRepository = require("../repositories/deviceRepository");
+var deviceRepository = require("../repositories/deviceRepository"),
+    deviceEventRepository = require("../repositories/deviceEventRepository");
 
 function DeviceController(io) {
     var router = express.Router();
@@ -54,15 +55,24 @@ function DeviceController(io) {
             res.status(400).send("");
     })
 
-    router.post('/resetInfo', function (req, res) {
+    router.post('/resetInfo', function (req, res, next) {
         console.log(req.body);
         if (req.body != undefined) {
             var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-            deviceRepository.getByIp(ip.replace("::ffff:", ""), function (err, device) {
-                device.resetInfo = req.body;
-                res.status(201).send("");
+            var event = {
+                date: new Date(),
+                ip: ip.replace("::ffff:", ""),
+                type: 'reset-info',
+                message: req.body
+            };
+
+            deviceEventRepository.add(event, function (err) {
+                if (err) next(err);
+                else res.status(201).send("");
             });
+
+            io.sockets.emit('events', JSON.stringify(event));
         }
         else
             res.status(400).send("");

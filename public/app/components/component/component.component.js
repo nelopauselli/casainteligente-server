@@ -13,7 +13,7 @@ function ComponentController($scope, socket) {
 	ctrl = this;
 
 	ctrl.$onInit = function () {
-		socket.on('events', function (args) {
+		socket.on('message', function (args) {
 			var data = JSON.parse(args);
 
 			if ($scope.topic == data.topic) {

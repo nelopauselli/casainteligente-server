@@ -12,24 +12,28 @@ DeviceController.$inject = ['$scope', 'socket'];
 function DeviceController($scope, socket) {
 	ctrl = this;
 
+	$scope.events = [];
 	ctrl.$onInit = function () {
-		socket.on('events', function (args) {
+		socket.on('message', function (args) {
 			var data = JSON.parse(args);
-
 			if ($scope.topic == data.topic) {
 				$scope.state = data.message;
 			}
 		});
 
 		socket.on('status', function (args) {
-			console.log(args);
 			var data = JSON.parse(args);
 			if ($scope.ip == data.ip) {
 				$scope.status = data.status;
 			}
 		});
 
-		socket.emit('action', JSON.stringify({ topic: $scope.topic, body: 'state' }));
+		socket.on('events', function (args) {
+			var data = JSON.parse(args);
+			if ($scope.ip == data.ip) {
+				$scope.events.push(data);
+			}
+		});
 	};
 
 	ctrl.$onChanges = function (changes) {
@@ -40,7 +44,6 @@ function DeviceController($scope, socket) {
 			$scope.topic = changes.device.currentValue.topic;
 			$scope.components = changes.device.currentValue.components;
 			$scope.metrics = changes.device.currentValue.metrics;
-			$scope.resetInfo = changes.device.currentValue.resetInfo;
 		}
 	};
 

@@ -22,9 +22,6 @@
 						<div class="md-caption" ng-show="topicVisible" md-colors="{color:'accent'}">
 							[ {{topic}} ]
 						</div>
-						<div class="md-caption" ng-show="topicVisible" md-colors="{color:'accent'}" hide-xs>
-							Reset Info: {{resetInfo}}
-						</div>
 					</div>
 				</div>
 			</div>
@@ -46,5 +43,10 @@
 		<hr/>
 	</div>
 
+	<div>
+		<div ng-repeat="event in events">
+			{{event.date}} - {{event.message}}
+		</div>
+	</div>
 	<logs topic="topic"></logs>
 </div>

@@ -13,7 +13,7 @@ function HistoryController(io, client) {
 
     client.on('message', function (topic, message) {
         //console.log(topic + ": " + message.toString());
-        io.sockets.emit("events", JSON.stringify({ topic: topic, message: message.toString() }));
+        io.sockets.emit("message", JSON.stringify({ topic: topic, message: message.toString() }));
         historyRepository.add(topic, message.toString());
     });
     return router;
