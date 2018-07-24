@@ -14,6 +14,21 @@ var client = mqtt.connect('mqtt://192.168.1.10:1883');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+	if (req.headers["content-type"] == "text/plain") {
+		req.setEncoding('utf8');
+		req.body = '';
+		req.on('data', function (chunk) {
+			req.body += chunk;
+		});
+		req.on('end', function () {
+			next();
+		});
+	}
+	else {
+		next();
+	}
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 

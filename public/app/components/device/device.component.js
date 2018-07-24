@@ -40,6 +40,7 @@ function DeviceController($scope, socket) {
 			$scope.topic = changes.device.currentValue.topic;
 			$scope.components = changes.device.currentValue.components;
 			$scope.metrics = changes.device.currentValue.metrics;
+			$scope.resetInfo = changes.device.currentValue.resetInfo;
 		}
 	};
 

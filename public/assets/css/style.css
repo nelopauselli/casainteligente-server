@@ -35,14 +35,14 @@ md-list-item .avatar {
     -moz-transform: scale(.7);
 }
 
-.online .avatar {
+.online .status {
     color: rgba(0, 150, 0, .5);
 }
 
-.offline .avatar {
+.offline .status {
     color: #B00020;
 }
 
-.unknown .avatar {
+.unknown .status {
     color: rgba(200, 200, 100, .5);
 }

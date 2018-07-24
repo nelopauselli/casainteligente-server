@@ -54,6 +54,20 @@ function DeviceController(io) {
             res.status(400).send("");
     })
 
+    router.post('/resetInfo', function (req, res) {
+        console.log(req.body);
+        if (req.body != undefined) {
+            var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+            deviceRepository.getByIp(ip.replace("::ffff:", ""), function (err, device) {
+                device.resetInfo = req.body;
+                res.status(201).send("");
+            });
+        }
+        else
+            res.status(400).send("");
+    });
+
     router.get('/{id}', function (req, res, next) {
         var id = req.query.id;
         deviceRepository.getById(id, function (err, device) {

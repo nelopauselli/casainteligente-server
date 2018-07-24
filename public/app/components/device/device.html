@@ -3,23 +3,28 @@
 		<div flex>
 			<div layout="row">
 				<div>
-					<h1>
-						<md-icon class="avatar" hide-xs>
-							<i class="fas fa-cogs fa-3x"></i>
+					<h1 hide-xs>
+						<md-icon class="avatar status">
+							<i class="fas fa-dot-circle fa-3x"></i>
 						</md-icon>
 					</h1>
 				</div>
 				<div layout="column">
 					<div>
-						<h1>
+						<h1 class="status">
 							{{name}}
 						</h1>
-						<h2>
-							{{ip}}
-						</h2>
 					</div>
 					<div>
-						<span class="md-caption" ng-show="topicVisible" md-colors="{color:'accent'}">[ {{topic}} ]</span>
+						<div class="md-caption" ng-show="topicVisible" md-colors="{color:'accent'}" hide-xs>
+							IP: {{ip}}
+						</div>
+						<div class="md-caption" ng-show="topicVisible" md-colors="{color:'accent'}">
+							[ {{topic}} ]
+						</div>
+						<div class="md-caption" ng-show="topicVisible" md-colors="{color:'accent'}" hide-xs>
+							Reset Info: {{resetInfo}}
+						</div>
 					</div>
 				</div>
 			</div>

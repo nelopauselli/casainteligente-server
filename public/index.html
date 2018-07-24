@@ -30,8 +30,8 @@
 			<md-list ng-click="toggleMenu();">
 				<md-list-item ng-repeat="device in devices">
 					<md-button ng-click="select(device)" ng-class="device.status">
-						<md-icon class="avatar">
-							<i class="fas fa-cogs fa-3x"></i>
+						<md-icon class="status avatar">
+							<i class="fas fa-dot-circle fa-3x"></i>
 						</md-icon>
 						{{device.name}}
 					</md-button>
