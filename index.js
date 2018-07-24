@@ -40,6 +40,8 @@ app.use(function (req, res, next) {
 app.use("/esp/update", require("./ota"));
 app.use("/api", require("./controllers")(io, client));
 
+var worker = require("./workers/forwardWorker")(client);
+
 app.get("*", function (req, res) {
 	console.error(req.path + " not found.");
 });
