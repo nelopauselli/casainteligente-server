@@ -1,31 +1,10 @@
 var express = require('express'),
-    path = require('path'),
-    ping = require('ping');
+    path = require('path');
 var deviceRepository = require("../repositories/deviceRepository"),
     deviceEventRepository = require("../repositories/deviceEventRepository");
 
 function DeviceController(io) {
     var router = express.Router();
-
-    setInterval(function () {
-        deviceRepository.getAll(function (err, devices) {
-            devices.forEach(function (device) {
-                var host = device.ip;
-                if (host) {
-                    ping.sys.probe(host, function (isAlive) {
-                        var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
-                        console.log(msg);
-
-                        device.status = isAlive ? "online" : "offline";
-                        io.sockets.emit('status', JSON.stringify({ ip: device.ip, status: device.status }));
-                    });
-                } else {
-                    device.status = "unknown";
-                    io.sockets.emit('status', JSON.stringify({ ip: device.ip, status: device.status }));
-                }
-            });
-        });
-    }, 10 * 1000);
 
     router.get('/', function (req, res) {
         deviceRepository.getAll(function (err, devices) {
