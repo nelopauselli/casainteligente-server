@@ -44,6 +44,18 @@ function DeviceController($scope, socket) {
 			$scope.topic = changes.device.currentValue.topic;
 			$scope.components = changes.device.currentValue.components;
 			$scope.metrics = changes.device.currentValue.metrics;
+
+			$scope.cfg = {
+				wifis: [{ ssid: '', password: '' }, { ssid: '', password: '' }],
+				mqttConnectionString: "mqtt://@192.168.1.10:1883",
+				deviceName: "Baño",
+				mqttTopicBse: "/casa",
+				otaUrl: "http://192.168.1.10/esp/update",
+				hostAddress: "192.168.1.10",
+				hostPort: 80,
+				relays: ["Extractor", "Toallero"],
+				buttons: ["Extractor", "Toallero"]
+			}
 		}
 	};
 
