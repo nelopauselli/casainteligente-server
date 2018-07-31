@@ -38,23 +38,23 @@ function DeviceController($scope, socket) {
 
 	ctrl.$onChanges = function (changes) {
 		if (changes.device.currentValue) {
-			$scope.name = changes.device.currentValue.name;
-			$scope.ip = changes.device.currentValue.ip;
-			$scope.status = changes.device.currentValue.status;
-			$scope.topic = changes.device.currentValue.topic;
-			$scope.components = changes.device.currentValue.components;
-			$scope.metrics = changes.device.currentValue.metrics;
+			var device = changes.device.currentValue;
+			$scope.name = device.name;
+			$scope.ip = device.ip;
+			$scope.status = device.status;
+			$scope.topic = device.topic;
+			$scope.components = device.components;
+			$scope.metrics = device.metrics;
 
 			$scope.cfg = {
-				wifis: [{ ssid: '', password: '' }, { ssid: '', password: '' }],
-				mqttConnectionString: "mqtt://@192.168.1.10:1883",
-				deviceName: "Baño",
-				mqttTopicBse: "/casa",
-				otaUrl: "http://192.168.1.10/esp/update",
-				hostAddress: "192.168.1.10",
-				hostPort: 80,
-				relays: ["Extractor", "Toallero"],
-				buttons: ["Extractor", "Toallero"]
+				wifis: [{ ssid: device.wifi0, password: '' }, { ssid: device.wifi1, password: '' }],
+				mqttConnectionString: device.mqttConnectionString,
+				deviceName: device.name,
+				mqttTopicBase: device.mqttTopicBase,
+				serverAddress: device.serverAddress,
+				serverPort: device.serverPort,
+				otaPath: device.otaPath,
+				components: device.components
 			}
 		}
 	};

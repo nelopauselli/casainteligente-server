@@ -14,14 +14,17 @@ function DeviceController(io) {
 
     router.post('/', function (req, res) {
         if (req.body != undefined) {
+            console.log("request:");
+            console.dir(req.body);
+
             var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
             var device = req.body;
             device.ip = ip.replace("::ffff:", "");
             device.status = "online";
-            device.topic = path.posix.join(device.topic, device.name);
+            device.topic = path.posix.join(device.mqttTopicBase || device.topic, device.name);
             device.metrics.forEach(m => m.topic = path.posix.join(device.topic, m.topic));
-            device.components.forEach(c => c.topic = path.posix.join(device.topic, c.topic));
+            device.components.forEach(c => c.topic = path.posix.join(device.topic, c.name));
 
             console.log("new device: ");
             console.dir(JSON.stringify(device));
