@@ -7,9 +7,9 @@ angular.module("app")
 		}
 	});
 
-DeviceController.$inject = ['$scope', 'socket'];
+DeviceController.$inject = ['$scope', '$http', 'socket'];
 
-function DeviceController($scope, socket) {
+function DeviceController($scope, $http, socket) {
 	ctrl = this;
 
 	$scope.events = [];
@@ -61,5 +61,30 @@ function DeviceController($scope, socket) {
 
 	$scope.invoke = function (topic, action) {
 		socket.emit('action', JSON.stringify({ topic: topic, body: action }));
+	}
+
+	$scope.saveConectivity = function () {
+		var url = 'http://' + $scope.ip + '/';
+		var settings = { deviceName: $scope.cfg.deviceName };
+
+		console.log(settings);
+		
+		$http({
+			method: 'POST',
+			url: url,
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			transformRequest: function (obj) {
+				var str = [];
+				for (var p in obj)
+					str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+				return str.join("&");
+			},
+			data: settings
+		}).then(function (response) {
+			$scope.message = "Dispositivo configurado";
+		}, function (error) {
+			console.error(error);
+			$scope.message = error.toString();
+		});
 	}
 }

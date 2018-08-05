@@ -44,7 +44,7 @@
 			<div class="md-toolbar-tools">Configurando {{name}} [ {{ip}} ]</div>
 		</md-toolbar>
 		<md-tabs md-dynamic-height>
-			<md-tab label="Conectividad">
+			<md-tab label="WiFi">
 				<md-content class="md-padding" layout="column">
 					<form name="conectivityForm">
 						<div layout="row" ng-repeat="wifi in cfg.wifis">
@@ -58,43 +58,52 @@
 							</md-input-container>
 						</div>
 
-						<div layout="row">
-							<md-input-container flex="50">
-								<label>Mqtt Connection String</label>
-								<input ng-model="cfg.mqttConnectionString" placeholder="mqtt://username:password@host:port" />
-							</md-input-container>
-							<md-input-container flex>
-								<label>Mqtt Topic Base</label>
-								<input ng-model="cfg.mqttTopicBase" />
-							</md-input-container>
-							<md-input-container flex>
-								<label>Device Name</label>
-								<input ng-model="cfg.deviceName" />
-							</md-input-container>
-						</div>
-
-						<div layout="row">
-							<md-input-container flex>
-								<label>Host Address</label>
-								<input ng-model="cfg.serverAddress" type="ip" ng-pattern='/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/' placeholder='xxx.xxx.xxx.xxx'
-								/>
-							</md-input-container>
-							<md-input-container>
-								<label>Host Port</label>
-								<input ng-model="cfg.serverPort" type="number" />
-							</md-input-container>
-							<md-input-container flex>
-								<label>OTA Path:</label>
-								<input ng-model="cfg.otaPath" type="text" />
-							</md-input-container>
-						</div>
-
 						<div layout="row" layout-align="end">
 							<md-button class="md-raised md-primary">Guardar</md-button>
 						</div>
 					</form>
 				</md-content>
 			</md-tab>
+			<md-tab label="Conectividad">
+					<md-content class="md-padding" layout="column">
+						<form name="conectivityForm">
+							<div layout="row">
+								<md-input-container flex="50">
+									<label>Mqtt Connection String</label>
+									<input ng-model="cfg.mqttConnectionString" placeholder="mqtt://username:password@host:port" />
+								</md-input-container>
+								<md-input-container flex>
+									<label>Mqtt Topic Base</label>
+									<input ng-model="cfg.mqttTopicBase" />
+								</md-input-container>
+								<md-input-container flex>
+									<label>Device Name</label>
+									<input ng-model="cfg.deviceName" />
+								</md-input-container>
+							</div>
+	
+							<div layout="row">
+								<md-input-container flex>
+									<label>Host Address</label>
+									<input ng-model="cfg.serverAddress" type="ip" ng-pattern='/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/' placeholder='xxx.xxx.xxx.xxx'
+									/>
+								</md-input-container>
+								<md-input-container>
+									<label>Host Port</label>
+									<input ng-model="cfg.serverPort" type="number" />
+								</md-input-container>
+								<md-input-container flex>
+									<label>OTA Path:</label>
+									<input ng-model="cfg.otaPath" type="text" />
+								</md-input-container>
+							</div>
+	
+							<div layout="row" layout-align="end">
+								<md-button class="md-raised md-primary" ng-click="saveConectivity()">Guardar</md-button>
+							</div>
+						</form>
+					</md-content>
+				</md-tab>
 			<md-tab label="Componentes">
 				<md-content class="md-padding" layout="column">
 					<form name="componentsForm">

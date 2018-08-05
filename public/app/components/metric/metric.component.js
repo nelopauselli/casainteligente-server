@@ -54,23 +54,25 @@ function MetricController($scope, $http, socket) {
 
 		$http.get('/api/history?topic=' + $scope.metric.topic).then(
 			function (response) {
-				response.data.forEach(element => {
-					var value = undefined;
+				if (response.data) {
+					response.data.forEach(element => {
+						var value = undefined;
 
-					if ($scope.metric.property) {
-						var m = JSON.parse(element.data);
-						value = m[$scope.metric.property];
-					}
-					else {
-						value = element.data;
-					}
+						if ($scope.metric.property) {
+							var m = JSON.parse(element.data);
+							value = m[$scope.metric.property];
+						}
+						else {
+							value = element.data;
+						}
 
-					$scope.metric.value = value;
-					$scope.data[0].push({
-						x: element.date,
-						y: value
+						$scope.metric.value = value;
+						$scope.data[0].push({
+							x: element.date,
+							y: value
+						});
 					});
-				});
+				}
 			}
 		);
 	};
