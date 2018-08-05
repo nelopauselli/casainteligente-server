@@ -4,14 +4,18 @@
 
 
 <div style="visibility: hidden">
-		<div class="md-dialog-container" id="newDevicePopup">
-			<md-dialog layout-padding>
-				<md-dialog-content>
+	<div class="md-dialog-container" id="newDevicePopup">
+		<md-dialog layout-padding>
+			<md-dialog-content>
 				<h2>Agregar nuevo dispositivo</h2>
-				<p ng-show="!settings.connected">
-					Revise sus conexiones WiFi y conectesté a una cuyo nombre sea ESP-#### donde ### es el ID del dispositivo. Luego presione el bot&oacute;n "Buscar Dispositivo"
+				<p ng-show="!connected">
+					Revise sus conexiones WiFi y conectesté a una cuyo nombre sea ESP-#### donde ### es el ID del dispositivo. Luego presione
+					el bot&oacute;n "Buscar Dispositivo"
 				</p>
-				<form name="newDeviceForm" ng-show="settings.connected">
+				<div layout="row" layout-sm="column" layout-align="space-around" ng-show="searching">
+					<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+				</div>
+				<form name="newDeviceForm" ng-show="connected">
 					<div layout="row">
 						<md-input-container flex>
 							<label>WiFi</label>
@@ -55,10 +59,10 @@
 				</div>
 			</md-dialog-content>
 			<md-dialog-actions>
-					<md-button class="md-raised md-primary" ng-click="configure()" ng-show="settings.connected">Configurar!</md-button>
-					<md-button ng-click="searchDevice()" ng-show="!settings.connected">Buscar dispositivo</md-button>
-				<md-button ng-click="cancel()">Cancelar</md-button>
+					<md-button ng-click="cancel()">Cancelar</md-button>
+					<md-button class="md-raised md-primary" ng-click="configure()" ng-show="connected">Configurar!</md-button>
+				<md-button class="md-primary" ng-click="searchDevice()" ng-show="!connected && !searching">Buscar dispositivo</md-button>
 			</md-dialog-actions>
-			</md-dialog>
-		</div>
+		</md-dialog>
 	</div>
+</div>
