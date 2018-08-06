@@ -47,7 +47,7 @@ function DeviceController($scope, $http, socket) {
 			$scope.metrics = device.metrics;
 
 			$scope.cfg = {
-				wifis: [{ ssid: device.wifi0, password: '' }, { ssid: device.wifi1, password: '' }],
+				wifis: [{ ssid: device.wifi1, password: '' }, { ssid: device.wifi2, password: '' }],
 				mqttConnectionString: device.mqttConnectionString,
 				deviceName: device.name,
 				mqttTopicBase: device.mqttTopicBase,
@@ -63,12 +63,40 @@ function DeviceController($scope, $http, socket) {
 		socket.emit('action', JSON.stringify({ topic: topic, body: action }));
 	}
 
+	$scope.saveWifi = function () {
+		var url = 'http://' + $scope.ip + '/';
+		var settings = { 
+			ssid: $scope.cfg.wifis[0].ssid, password: $scope.cfg.wifis[0].password,
+			ssid2: $scope.cfg.wifis[1].ssid, password2: $scope.cfg.wifis[1].password
+		 };
+
+		console.log(settings);
+
+		$http({
+			method: 'POST',
+			url: url,
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			transformRequest: function (obj) {
+				var str = [];
+				for (var p in obj)
+					str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+				return str.join("&");
+			},
+			data: settings
+		}).then(function (response) {
+			$scope.message = "Dispositivo configurado";
+		}, function (error) {
+			console.error(error);
+			$scope.message = error.toString();
+		});
+	}
+
 	$scope.saveConectivity = function () {
 		var url = 'http://' + $scope.ip + '/';
 		var settings = { deviceName: $scope.cfg.deviceName };
 
 		console.log(settings);
-		
+
 		$http({
 			method: 'POST',
 			url: url,

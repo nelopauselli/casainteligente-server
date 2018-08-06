@@ -54,12 +54,12 @@
 							</md-input-container>
 							<md-input-container flex>
 								<label>Password</label>
-								<input ng-model="wifi.password" />
+								<input ng-model="wifi.password" type="password" />
 							</md-input-container>
 						</div>
 
 						<div layout="row" layout-align="end">
-							<md-button class="md-raised md-primary">Guardar</md-button>
+							<md-button class="md-raised md-primary" ng-click="saveWifi()">Guardar</md-button>
 						</div>
 					</form>
 				</md-content>
