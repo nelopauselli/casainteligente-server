@@ -13,7 +13,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 //MQTT
-var client = mqtt.connect('mqtt://192.168.1.10:1883');
+var client = mqtt.connect('mqtt://192.168.0.127:1883');
 client.on('connect', function () {
 	console.log("conexión establecida con broker mqtt")
 	client.subscribe('/#', function (err, granted) {
