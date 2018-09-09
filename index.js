@@ -89,10 +89,10 @@ server.listen(port, function () {
 			discovery(target);
 			setTimeout(function () {
 				discovery(target);
-				setInterval(function () {
+				setTimeout(function () {
 					discovery(target);
-				}, 30 * 60 * 1000);
-			}, 5 * 1000);
+				}, 60 * 1000);
+			}, 10 * 1000);
 		}
 	});
 });

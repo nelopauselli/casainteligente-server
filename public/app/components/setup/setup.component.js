@@ -12,10 +12,10 @@ function SetupController($scope, $mdDialog, $http) {
 	$scope.openAddDevice = function (ev) {
 		$scope.settings = {
 			ssid: 'Positano', password: '',
-			mqttConnectionString: 'mqtt://@192.168.1.10:1883',
+			mqttConnectionString: 'mqtt://@192.168.0.127:1883',
 			mqttTopicBase: '/casa',
 			deviceName: '',
-			serverAddress: '192.168.1.10',
+			serverAddress: '192.168.0.127',
 			serverPort: 80
 		};
 		$scope.searching = false;
